@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/precache-manifest.695fa82be48a156c16d65c5466ccae67.js"
+  "/github-search-graphql/precache-manifest.365a7de1790d4624786625f8f8ee827f.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,7 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/github-search-graphql/index.html"), {
   
   blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 });

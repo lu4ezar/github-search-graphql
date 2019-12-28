@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/css/main.cb348b44.chunk.css",
-    "main.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/main.214fde06.chunk.js",
-    "main.js.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/main.214fde06.chunk.js.map",
-    "runtime-main.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/runtime-main.b595760c.js",
-    "runtime-main.js.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/runtime-main.b595760c.js.map",
-    "static/js/2.b3ca264d.chunk.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/2.b3ca264d.chunk.js",
-    "static/js/2.b3ca264d.chunk.js.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/2.b3ca264d.chunk.js.map",
-    "index.html": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/index.html",
-    "precache-manifest.695fa82be48a156c16d65c5466ccae67.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/precache-manifest.695fa82be48a156c16d65c5466ccae67.js",
-    "service-worker.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/service-worker.js",
-    "static/css/main.cb348b44.chunk.css.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/css/main.cb348b44.chunk.css.map",
-    "static/js/2.b3ca264d.chunk.js.LICENSE": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/2.b3ca264d.chunk.js.LICENSE"
+    "main.css": "/github-search-graphql/static/css/main.cb348b44.chunk.css",
+    "main.js": "/github-search-graphql/static/js/main.214fde06.chunk.js",
+    "main.js.map": "/github-search-graphql/static/js/main.214fde06.chunk.js.map",
+    "runtime-main.js": "/github-search-graphql/static/js/runtime-main.5f6c6a1e.js",
+    "runtime-main.js.map": "/github-search-graphql/static/js/runtime-main.5f6c6a1e.js.map",
+    "static/js/2.3787e77e.chunk.js": "/github-search-graphql/static/js/2.3787e77e.chunk.js",
+    "static/js/2.3787e77e.chunk.js.map": "/github-search-graphql/static/js/2.3787e77e.chunk.js.map",
+    "index.html": "/github-search-graphql/index.html",
+    "precache-manifest.365a7de1790d4624786625f8f8ee827f.js": "/github-search-graphql/precache-manifest.365a7de1790d4624786625f8f8ee827f.js",
+    "service-worker.js": "/github-search-graphql/service-worker.js",
+    "static/css/main.cb348b44.chunk.css.map": "/github-search-graphql/static/css/main.cb348b44.chunk.css.map",
+    "static/js/2.3787e77e.chunk.js.LICENSE": "/github-search-graphql/static/js/2.3787e77e.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.b595760c.js",
-    "static/js/2.b3ca264d.chunk.js",
+    "static/js/runtime-main.5f6c6a1e.js",
+    "static/js/2.3787e77e.chunk.js",
     "static/css/main.cb348b44.chunk.css",
     "static/js/main.214fde06.chunk.js"
   ]
