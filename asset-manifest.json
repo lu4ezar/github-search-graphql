@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/css/main.cb348b44.chunk.css",
+    "main.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/main.214fde06.chunk.js",
+    "main.js.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/main.214fde06.chunk.js.map",
+    "runtime-main.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/runtime-main.b595760c.js",
+    "runtime-main.js.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/runtime-main.b595760c.js.map",
+    "static/js/2.b3ca264d.chunk.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/2.b3ca264d.chunk.js",
+    "static/js/2.b3ca264d.chunk.js.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/2.b3ca264d.chunk.js.map",
+    "index.html": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/index.html",
+    "precache-manifest.695fa82be48a156c16d65c5466ccae67.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/precache-manifest.695fa82be48a156c16d65c5466ccae67.js",
+    "service-worker.js": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/service-worker.js",
+    "static/css/main.cb348b44.chunk.css.map": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/css/main.cb348b44.chunk.css.map",
+    "static/js/2.b3ca264d.chunk.js.LICENSE": "/@Keithweaver_/hosting-a-react-app-for-free-using-github-pages-57bc049580d8/static/js/2.b3ca264d.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b595760c.js",
+    "static/js/2.b3ca264d.chunk.js",
+    "static/css/main.cb348b44.chunk.css",
+    "static/js/main.214fde06.chunk.js"
+  ]
+}
