@@ -1,4 +1,5 @@
 {
+  "homepage": "https://lu4ezar.github.io/github-search-graphql/",
   "name": "github-search-graphql",
   "version": "0.1.0",
   "private": true,
@@ -28,6 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +53,7 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
+    "gh-pages": "^2.1.1",
     "prettier": "^1.19.1",
     "stylelint": "^12.0.0"
   }
