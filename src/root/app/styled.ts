@@ -30,7 +30,10 @@ const Container = styled.div`
     border-radius: 4px;
     box-shadow: 2px 5px 10px #262323;
     background: ghostwhite;
-    padding: 1em;
+    padding: 0 1rem;
+    @media (min-width: 1024px) {
+      padding: 1rem;
+    }
   }
 `;
 
