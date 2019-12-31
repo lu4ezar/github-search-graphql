@@ -13,6 +13,7 @@ export const InputDiv = styled.div`
     border: 0;
     outline: 0;
     border-bottom: 2px solid black;
+    margin-bottom: 0.1rem;
     text-align: center;
     font-weight: bold;
     font-size: 1.5rem;
