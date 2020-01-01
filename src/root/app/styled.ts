@@ -5,6 +5,7 @@ const Container = styled.div`
   box-sizing: border-box;
   display: grid;
   grid-gap: 1rem;
+  padding: 1rem;
   grid-template-rows: auto auto 1fr auto auto;
   grid-template-areas:
     "header"
