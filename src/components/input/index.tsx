@@ -4,7 +4,7 @@ import { InputDiv, Close } from "./styled";
 const Input = ({ searchString, handleInput, clearInput }: any) => {
   const visibility = searchString ? "show" : "";
   return (
-    <InputDiv className="input">
+    <InputDiv>
       <label htmlFor="search">
         <input
           id="search"
