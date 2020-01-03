@@ -28,7 +28,6 @@ const Recent = ({ searchHistory, getValueFromHistory }: any) => {
   const onClick = () =>
     isCollapsed ? changeCollapseState(false) : changeCollapseState(true);
   const currentIcon = isCollapsed ? ChevronDown : ChevronUp;
-  const collapsedClassName = isCollapsed ? "collapsed" : "";
   return (
     <RecentDiv>
       <Panel>
@@ -39,7 +38,7 @@ const Recent = ({ searchHistory, getValueFromHistory }: any) => {
           </Button>
         )}
       </Panel>
-      <CollapsableListDiv className={collapsedClassName}>
+      <CollapsableListDiv className={isCollapsed ? "collapsed" : ""}>
         {list}
       </CollapsableListDiv>
     </RecentDiv>
