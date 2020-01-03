@@ -12,7 +12,7 @@ const Input = ({ searchString, handleInput, clearInput }: any) => (
         value={searchString}
       />
     </label>
-    <Close className={searchString && "show"} onClick={clearInput}>
+    <Close className={searchString ? "show" : ""} onClick={clearInput}>
       &times;
     </Close>
   </InputDiv>
