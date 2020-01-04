@@ -61,6 +61,8 @@ const List = ({ searchString, updateHistory }: any) => {
     });
   };
 
+  const dataLength = data?.search?.edges?.length;
+
   const getListContent = () => {
     switch (true) {
       case !!error:
@@ -69,7 +71,7 @@ const List = ({ searchString, updateHistory }: any) => {
         return (
           <CenteredLoader type="Oval" color="gray" height={100} width={100} />
         );
-      case !!data?.search?.edges?.length:
+      case !!dataLength:
         return getRepoList(data.search.edges);
       default:
         return null;
@@ -77,6 +79,7 @@ const List = ({ searchString, updateHistory }: any) => {
   };
 
   return (
+    <ListDiv className={dataLength && "filled"} onScroll={onScroll}>
       {getListContent()}
     </ListDiv>
   );
