@@ -4,7 +4,7 @@ import {
   HistoryItem,
   RecentDiv,
   Panel,
-  Heading,
+  Arrow,
   Button,
   CollapsableListDiv
 } from "./styled";
@@ -31,12 +31,12 @@ const Recent = ({ searchHistory, getValueFromHistory }: any) => {
   return (
     <RecentDiv>
       <Panel>
-        <Heading>Search History</Heading>
-        {!!searchHistory.length && (
-          <Button type="button" onClick={onClick}>
+        <Button type="button" onClick={onClick}>
+          Search History
+          <Arrow className={!searchHistory.length ? "invisible" : ""}>
             <Octicon icon={currentIcon} size="medium" />
-          </Button>
-        )}
+          </Arrow>
+        </Button>
       </Panel>
       <CollapsableListDiv className={isCollapsed ? "collapsed" : ""}>
         {list}

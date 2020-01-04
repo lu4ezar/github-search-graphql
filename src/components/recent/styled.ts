@@ -2,28 +2,35 @@ import styled from "styled-components";
 
 export const RecentDiv = styled.div`
   grid-area: aside_recent;
-  text-transform: uppercase;
-  font-weight: bold;
   display: flex;
   flex-direction: column;
-  padding: 0 1em;
 `;
 export const Panel = styled.div`
   display: flex;
-  align-items: center;
-`;
-export const Heading = styled.div`
-  text-align: center;
-  width: 100%;
 `;
 export const Button = styled.button`
   background-color: transparent;
   color: #262323;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   border: none;
   outline: none;
-  position: absolute;
-  right: 2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 1024px) {
+    cursor: auto;
+  }
+`;
+export const Arrow = styled.span`
+  position: relative;
+  right: -2rem;
+  &.invisible {
+    visibility: collapse;
+  }
   @media (min-width: 1024px) {
     display: none;
   }
