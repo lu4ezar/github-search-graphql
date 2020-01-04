@@ -7,6 +7,7 @@ export const InputDiv = styled.div`
   grid-area: aside_input;
   & label {
     max-width: 90%;
+    padding: 0.5rem 0;
   }
   & input {
     background: transparent;
@@ -16,8 +17,11 @@ export const InputDiv = styled.div`
     margin-bottom: 0.1rem;
     text-align: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     width: 100%;
+    @media (min-width: 1024px) {
+      font-size: 1.5rem;
+    }
     &::placeholder {
       font-weight: normal;
       font-style: italic;
@@ -31,7 +35,6 @@ export const Close = styled.span`
   cursor: pointer;
   color: #262323;
   visibility: hidden;
-  font-size: 1.5rem;
   font-weight: bold;
   &.show {
     visibility: visible;
