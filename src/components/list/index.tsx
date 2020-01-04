@@ -61,7 +61,7 @@ const List = ({ searchString, updateHistory }: any) => {
     });
   };
 
-  const listContent = () => {
+  const getListContent = () => {
     switch (true) {
       case !!error:
         return <p>Error! Sorry there was an error!</p>;
@@ -77,8 +77,7 @@ const List = ({ searchString, updateHistory }: any) => {
   };
 
   return (
-    <ListDiv className={data && "filled"} onScroll={onScroll}>
-      {listContent()}
+      {getListContent()}
     </ListDiv>
   );
 };
