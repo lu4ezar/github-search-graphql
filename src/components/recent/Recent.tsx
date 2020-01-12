@@ -9,21 +9,28 @@ import {
   CollapsableListDiv
 } from "./styled";
 
-const Recent = ({ searchHistory, getValueFromHistory }: any) => {
+type RecentProps = {
+  searchHistory: string[];
+  getSearchStringFromHistory: (str: string) => void;
+};
+
+const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
   const [isCollapsed, changeCollapseState] = React.useState(true);
-  const list = searchHistory.length
-    ? searchHistory.map((searchWord: string, index: number) => (
-        <HistoryItem
-          title={`search for "${searchWord}" again`}
-          key={searchWord}
-          onClick={() => getValueFromHistory(searchWord)}
-          onKeyDown={() => getValueFromHistory(searchWord)}
-          role="button"
-          tabIndex={index}
-        >
-          {searchWord}
-        </HistoryItem>
-      ))
+  const list: React.ReactNode[] | null = searchHistory.length
+    ? searchHistory.map(
+        (searchWord, index: number): React.ReactNode => (
+          <HistoryItem
+            title={`search for "${searchWord}" again`}
+            key={searchWord}
+            onClick={() => getSearchStringFromHistory(searchWord)}
+            onKeyDown={() => getSearchStringFromHistory(searchWord)}
+            role="button"
+            tabIndex={index}
+          >
+            {searchWord}
+          </HistoryItem>
+        )
+      )
     : null;
   const onClick = () =>
     isCollapsed ? changeCollapseState(false) : changeCollapseState(true);
