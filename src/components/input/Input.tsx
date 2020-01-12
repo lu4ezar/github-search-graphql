@@ -1,7 +1,13 @@
 import React from "react";
 import { InputDiv, Close } from "./styled";
 
-const Input = ({ searchString, handleInput, clearInput }: any) => (
+type InputProps = {
+  value: string | number | string[] | undefined;
+  handleInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  clearInput: () => void;
+};
+
+const Input = ({ value, handleInput, clearInput }: InputProps) => (
   <InputDiv>
     <label htmlFor="search">
       <input
@@ -9,10 +15,10 @@ const Input = ({ searchString, handleInput, clearInput }: any) => (
         type="search"
         onChange={handleInput}
         placeholder="github-search-graphql"
-        value={searchString}
+        value={value}
       />
     </label>
-    <Close className={searchString && "show"} onClick={clearInput}>
+    <Close className={value ? "show" : ""} onClick={clearInput}>
       &times;
     </Close>
   </InputDiv>
