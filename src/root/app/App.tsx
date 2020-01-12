@@ -35,13 +35,13 @@ const App = () => {
     <Container>
       <Header />
       <Input
-        searchString={searchString}
+        value={searchString}
         handleInput={handleInput}
         clearInput={clearInput}
       />
       <Recent
         searchHistory={searchHistory}
-        getValueFromHistory={setInputValue}
+        getSearchStringFromHistory={setInputValue}
       />
       <List searchString={searchString} updateHistory={updateHistory} />
       <Footer />
