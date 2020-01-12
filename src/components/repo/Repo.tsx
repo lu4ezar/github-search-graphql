@@ -7,6 +7,8 @@ import Octicon, {
   CircleSlash
 } from "@primer/octicons-react";
 import { StyledRepo, Text, Link, IconContainer, Icon } from "./styled";
+// eslint-disable-next-line camelcase
+import { GetRepos_search_edges_node_Repository } from "../../apollo/client/__generated__/GetRepos";
 
 const Repo = ({
   homepageUrl,
@@ -15,7 +17,8 @@ const Repo = ({
   url,
   stargazers,
   watchers
-}: any) => (
+}: // eslint-disable-next-line camelcase
+GetRepos_search_edges_node_Repository) => (
   <StyledRepo>
     <Text>
       <h3>
