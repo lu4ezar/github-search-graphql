@@ -1,10 +1,10 @@
 import React from "react";
 
-import Header from "../../components/header";
-import Footer from "../../components/footer";
-import Input from "../../components/input";
-import Recent from "../../components/recent";
-import List from "../../components/list";
+import Header from "../header";
+import Footer from "../footer";
+import Input from "../input";
+import Recent from "../recent";
+import List from "../list";
 import Container from "./styled";
 
 const HISTORY_MAX_SIZE = 10;
