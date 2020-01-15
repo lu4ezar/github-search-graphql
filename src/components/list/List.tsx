@@ -2,7 +2,7 @@ import React from "react";
 import { useLazyQuery } from "@apollo/react-hooks";
 
 import { QUERY } from "../../apollo/client";
-import Repo from "../repo/index";
+import Repo from "../repo";
 import { CenteredLoader, ListDiv } from "./styled";
 
 const getRepoList = (repos: any) =>
