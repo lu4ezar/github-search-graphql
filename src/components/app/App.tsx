@@ -6,14 +6,15 @@ import Input from "../input";
 import Recent from "../recent";
 import List from "../list";
 import Container from "./styled";
+import { SearchString } from "../../interfaces";
 
 const HISTORY_MAX_SIZE = 10;
 
 const App = () => {
   const [searchString, setSearchString] = React.useState("");
-  const [searchHistory, setHistory] = React.useState<string[]>([]);
+  const [searchHistory, setHistory] = React.useState([] as SearchString[]);
 
-  const updateHistory = (newSearch: string) => {
+  const updateHistory = (newSearch: SearchString) => {
     if (!searchHistory.includes(newSearch)) {
       const newLength = searchHistory.unshift(newSearch);
       if (newLength > HISTORY_MAX_SIZE) {
@@ -25,7 +26,7 @@ const App = () => {
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchString(event.currentTarget.value);
   };
-  const setInputValue = (value: string) => {
+  const setInputValue = (value: SearchString) => {
     setSearchString(value);
   };
   const clearInput = (): void => {

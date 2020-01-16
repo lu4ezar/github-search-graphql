@@ -1,52 +1,83 @@
 import React from "react";
 import { useLazyQuery } from "@apollo/react-hooks";
-
+import {
+  GetRepos_search,
+  GetRepos_search_edges,
+  GetRepos_search_edges_node_Repository,
+  GetRepos
+} from "../../apollo/client/__generated__/GetRepos";
 import { QUERY } from "../../apollo/client";
 import Repo from "../repo";
 import { CenteredLoader, ListDiv } from "./styled";
 
-const getRepoList = (repos: any) =>
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  repos.map(({ node, cursor }: any) => <Repo key={cursor} {...node} />);
+interface ListProps {
+  searchString: SearchString;
+  updateHistory: (searchString: SearchString) => void;
+}
 
-const List = ({ searchString, updateHistory }: any) => {
-  const [getRepos, { called, loading, data, error, fetchMore }] = useLazyQuery(
-    QUERY,
-    {
-      onCompleted: () => {
-        if (error) return;
-        if (data.search.edges.length) {
-          updateHistory(searchString);
-        }
-      },
-      variables: {
-        searchString,
-        first: 30
-      },
-      errorPolicy: "all"
-    }
-  );
+const getRepoList = (repos: GetRepos_search["edges"]) =>
+  repos
+    ? (repos as GetRepos_search_edges[]).map(
+        ({
+          node,
+          cursor
+        }): React.ReactElement<
+          Partial<GetRepos_search_edges_node_Repository>
+        > => (
+          <Repo
+            key={cursor}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...(node as GetRepos_search_edges_node_Repository)}
+          />
+        )
+      )
+    : null;
+
+const List = ({ searchString, updateHistory }: ListProps) => {
+  const [getRepos, { called, loading, data, error, fetchMore }] = useLazyQuery<
+    GetRepos
+  >(QUERY, {
+    onCompleted: () => {
+      if (error) return;
+      if (data?.search?.edges?.length) {
+        updateHistory(searchString);
+      }
+    },
+    variables: {
+      searchString,
+      first: 30
+    },
+    errorPolicy: "all"
+  });
 
   React.useEffect(() => {
     if (!searchString || searchString.length < 4 || called) {
       return;
     }
-    getRepos(searchString);
-  }, [searchString, called, getRepos]);
+    getRepos({
+      variables: {
+        searchString
+      }
+    });
+  }, [searchString, getRepos]);
 
   const onScroll = (e: React.SyntheticEvent) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
     const listBottom = scrollHeight - scrollTop === clientHeight;
-    if (!listBottom) {
+    if (!listBottom || !data) {
       return undefined;
     }
     const { edges } = data.search;
-    const lastItemCursor = edges[edges.length - 1].cursor;
+    const lastItemCursor =
+      edges !== null ? edges[edges.length - 1]!.cursor : "";
     return fetchMore({
       variables: {
         after: lastItemCursor
       },
-      updateQuery: (prev: any, { fetchMoreResult }) => {
+      updateQuery: (
+        prev: GetRepos,
+        { fetchMoreResult }: { fetchMoreResult?: GetRepos }
+      ) => {
         if (!fetchMoreResult) {
           return prev;
         }
@@ -54,7 +85,7 @@ const List = ({ searchString, updateHistory }: any) => {
           ...fetchMoreResult,
           search: {
             ...fetchMoreResult.search,
-            edges: [...prev.search.edges, ...fetchMoreResult.search.edges]
+            edges: [...prev?.search.edges, ...fetchMoreResult?.search.edges]
           }
         };
       }
@@ -72,14 +103,14 @@ const List = ({ searchString, updateHistory }: any) => {
           <CenteredLoader type="Oval" color="gray" height={100} width={100} />
         );
       case !!dataLength:
-        return getRepoList(data.search.edges);
+        return data ? getRepoList(data.search.edges) : null;
       default:
         return null;
     }
   };
 
   return (
-    <ListDiv className={dataLength && "filled"} onScroll={onScroll}>
+    <ListDiv className={dataLength ? "filled" : ""} onScroll={onScroll}>
       {getListContent()}
     </ListDiv>
   );
