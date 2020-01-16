@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from "react";
 import { useLazyQuery } from "@apollo/react-hooks";
 import {
@@ -6,6 +7,7 @@ import {
   GetRepos_search_edges_node_Repository,
   GetRepos
 } from "../../apollo/client/__generated__/GetRepos";
+import { SearchString } from "../../interfaces";
 import { QUERY } from "../../apollo/client";
 import Repo from "../repo";
 import { CenteredLoader, ListDiv } from "./styled";
@@ -51,7 +53,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
   });
 
   React.useEffect(() => {
-    if (!searchString || searchString.length < 4 || called) {
+    if (!searchString || searchString.length < 4) {
       return;
     }
     getRepos({
