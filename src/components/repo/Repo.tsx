@@ -10,7 +10,7 @@ import Octicon, {
 import { StyledRepo, Text, Link, IconContainer, Icon } from "./styled";
 import { GetRepos_search_edges_node_Repository } from "../../apollo/client/__generated__/GetRepos";
 
-type RepoProps = Omit<GetRepos_search_edges_node_Repository, "descriptionHtml">;
+interface RepoProps extends GetRepos_search_edges_node_Repository {}
 
 const Repo = ({
   homepageUrl,
