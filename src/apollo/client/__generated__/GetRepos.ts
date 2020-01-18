@@ -41,10 +41,6 @@ export interface GetRepos_search_edges_node_Repository {
    */
   description: string | null;
   /**
-   * The description of the repository rendered to HTML.
-   */
-  descriptionHTML: any;
-  /**
    * The HTTP URL for this repository
    */
   url: any;
