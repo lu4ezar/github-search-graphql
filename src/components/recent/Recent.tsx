@@ -9,10 +9,10 @@ import {
   CollapsableListDiv
 } from "./styled";
 
-type RecentProps = {
+interface RecentProps {
   searchHistory: string[];
   getSearchStringFromHistory: (str: string) => void;
-};
+}
 
 const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
   const [isCollapsed, changeCollapseState] = React.useState(true);

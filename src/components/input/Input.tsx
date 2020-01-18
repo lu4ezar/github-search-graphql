@@ -1,11 +1,11 @@
 import React from "react";
 import { InputDiv, Close } from "./styled";
 
-type InputProps = {
+interface InputProps {
   value: string | number | string[] | undefined;
   handleInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   clearInput: () => void;
-};
+}
 
 const Input = ({ value, handleInput, clearInput }: InputProps) => (
   <InputDiv>
