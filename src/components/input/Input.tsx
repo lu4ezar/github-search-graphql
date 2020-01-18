@@ -1,5 +1,5 @@
 import React from "react";
-import { InputDiv, Close } from "./styled";
+import { InputDiv, Clear } from "./styled";
 
 interface InputProps {
   value: string | number | string[] | undefined;
@@ -18,9 +18,9 @@ const Input = ({ value, onChange, clearInput }: InputProps) => (
         value={value}
       />
     </label>
-    <Close className={value ? "show" : ""} onClick={clearInput}>
+    <Clear className={value ? "show" : ""} onClick={clearInput}>
       &times;
-    </Close>
+    </Clear>
   </InputDiv>
 );
 

@@ -28,7 +28,7 @@ export const InputDiv = styled.div`
     }
   }
 `;
-export const Close = styled.span`
+export const Clear = styled.span`
   width: 0;
   position: relative;
   right: 1em;
