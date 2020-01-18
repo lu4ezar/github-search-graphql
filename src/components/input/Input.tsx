@@ -18,7 +18,11 @@ const Input = ({ value, onChange, clearInput }: InputProps) => (
         value={value}
       />
     </label>
-    <Clear className={value ? "show" : ""} onClick={clearInput}>
+    <Clear
+      className={value ? "show" : ""}
+      onClick={clearInput}
+      title="clear input"
+    >
       &times;
     </Clear>
   </InputDiv>
