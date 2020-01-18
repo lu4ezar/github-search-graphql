@@ -18,15 +18,13 @@ interface ListProps {
 }
 
 const getRepoList = (repos: GetRepos_search["edges"]) =>
-  repos
-    ? (repos as GetRepos_search_edges[]).map(({ node, cursor }) => (
-        <Repo
-          key={cursor}
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...(node as GetRepos_search_edges_node_Repository)}
-        />
-      ))
-    : null;
+  (repos as GetRepos_search_edges[]).map(({ node, cursor }) => (
+    <Repo
+      key={cursor}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...(node as GetRepos_search_edges_node_Repository)}
+    />
+  ));
 
 const List = ({ searchString, updateHistory }: ListProps) => {
   const [getRepos, { called, loading, data, error, fetchMore }] = useLazyQuery<
