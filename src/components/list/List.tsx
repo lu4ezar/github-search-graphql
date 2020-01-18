@@ -19,20 +19,13 @@ interface ListProps {
 
 const getRepoList = (repos: GetRepos_search["edges"]) =>
   repos
-    ? (repos as GetRepos_search_edges[]).map(
-        ({
-          node,
-          cursor
-        }): React.ReactElement<
-          Partial<GetRepos_search_edges_node_Repository>
-        > => (
-          <Repo
-            key={cursor}
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...(node as GetRepos_search_edges_node_Repository)}
-          />
-        )
-      )
+    ? (repos as GetRepos_search_edges[]).map(({ node, cursor }) => (
+        <Repo
+          key={cursor}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...(node as GetRepos_search_edges_node_Repository)}
+        />
+      ))
     : null;
 
 const List = ({ searchString, updateHistory }: ListProps) => {
