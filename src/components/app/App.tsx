@@ -23,7 +23,7 @@ const App = () => {
       setHistory([...searchHistory]);
     }
   };
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchString(event.currentTarget.value);
   };
   const setInputValue = (value: SearchString) => {
@@ -35,11 +35,7 @@ const App = () => {
   return (
     <Container>
       <Header />
-      <Input
-        value={searchString}
-        handleInput={handleInput}
-        clearInput={clearInput}
-      />
+      <Input value={searchString} onChange={onChange} clearInput={clearInput} />
       <Recent
         searchHistory={searchHistory}
         getSearchStringFromHistory={setInputValue}
