@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from "react";
+import React, { useState } from "react";
 import Octicon, { ChevronUp, ChevronDown } from "@primer/octicons-react";
 import {
   HistoryItem,
@@ -16,21 +16,19 @@ interface RecentProps {
 
 const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
   const [isCollapsed, changeCollapseState] = useState(true);
-  const list: ReactNode[] | null = searchHistory.length
-    ? searchHistory.map(
-        (searchWord, index: number): ReactNode => (
-          <HistoryItem
-            title={`search for "${searchWord}" again`}
-            key={searchWord}
-            onClick={() => getSearchStringFromHistory(searchWord)}
-            onKeyDown={() => getSearchStringFromHistory(searchWord)}
-            role="button"
-            tabIndex={index}
-          >
-            {searchWord}
-          </HistoryItem>
-        )
-      )
+  const list = searchHistory.length
+    ? searchHistory.map((searchWord, index: number) => (
+        <HistoryItem
+          title={`search for "${searchWord}" again`}
+          key={searchWord}
+          onClick={() => getSearchStringFromHistory(searchWord)}
+          onKeyDown={() => getSearchStringFromHistory(searchWord)}
+          role="button"
+          tabIndex={index}
+        >
+          {searchWord}
+        </HistoryItem>
+      ))
     : null;
   const onClick = () =>
     isCollapsed ? changeCollapseState(false) : changeCollapseState(true);
