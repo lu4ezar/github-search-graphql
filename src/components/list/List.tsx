@@ -37,8 +37,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
       }
     },
     variables: {
-      searchString,
-      first: 30
+      searchString
     },
     errorPolicy: "all"
   });
