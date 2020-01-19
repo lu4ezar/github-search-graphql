@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React from "react";
+import React, { useEffect, SyntheticEvent } from "react";
 import { useLazyQuery } from "@apollo/react-hooks";
 import {
   GetRepos_search,
@@ -42,7 +42,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
     errorPolicy: "all"
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!searchString || searchString.length < 4) {
       return;
     }
@@ -53,7 +53,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
     });
   }, [searchString, getRepos]);
 
-  const onScroll = (e: React.SyntheticEvent) => {
+  const onScroll = (e: SyntheticEvent) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
     const listBottom = scrollHeight - scrollTop === clientHeight;
     if (!listBottom || !data) {

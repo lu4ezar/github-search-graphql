@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, ChangeEvent } from "react";
 
 import Header from "../header";
 import Footer from "../footer";
@@ -11,8 +11,8 @@ import { SearchString } from "../../interfaces";
 const HISTORY_MAX_SIZE = 10;
 
 const App = () => {
-  const [searchString, setSearchString] = React.useState("");
-  const [searchHistory, setHistory] = React.useState([] as SearchString[]);
+  const [searchString, setSearchString] = useState("");
+  const [searchHistory, setHistory] = useState([] as SearchString[]);
 
   const updateHistory = (newSearch: SearchString) => {
     if (!searchHistory.includes(newSearch)) {
@@ -23,7 +23,7 @@ const App = () => {
       setHistory([...searchHistory]);
     }
   };
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchString(event.currentTarget.value);
   };
   const setInputValue = (value: SearchString) => {

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { InputDiv, Clear } from "./styled";
 
 interface InputProps {
   value: string | number | string[] | undefined;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   clearInput: () => void;
 }
 
