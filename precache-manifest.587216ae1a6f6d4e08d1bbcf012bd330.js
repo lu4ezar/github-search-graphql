@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b3dffd7f866e8c42ee33a32978fce9c4",
+    "revision": "0b9d227a855eb8b14c1d4a5664e0b761",
     "url": "/github-search-graphql/index.html"
   },
   {
-    "revision": "4083227fe752ee762369",
+    "revision": "10f13373feb16724bf31",
     "url": "/github-search-graphql/static/css/main.cb348b44.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/github-search-graphql/static/js/2.6d4f7691.chunk.js.LICENSE"
   },
   {
-    "revision": "4083227fe752ee762369",
-    "url": "/github-search-graphql/static/js/main.bcaf77e2.chunk.js"
+    "revision": "10f13373feb16724bf31",
+    "url": "/github-search-graphql/static/js/main.09e195a6.chunk.js"
   },
   {
     "revision": "586553af5aee564e48a7",
