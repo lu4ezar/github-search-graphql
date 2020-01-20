@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const StyledRepo = styled.div`
+export const StyledRepo = styled.li`
+  list-style-type: none;
   box-shadow: inset 0px 0px 5px #262323;
   display: flex;
   flex-wrap: wrap;

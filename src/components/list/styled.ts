@@ -15,3 +15,7 @@ export const ListDiv = styled.div`
 export const CenteredLoader = styled(Loader)`
   margin: auto;
 `;
+export const StyledUl = styled.ul`
+  padding: 0;
+  margin: 0;
+`;

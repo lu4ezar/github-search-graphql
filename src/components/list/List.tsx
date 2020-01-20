@@ -10,21 +10,24 @@ import {
 import { SearchString } from "../../interfaces";
 import { QUERY } from "../../apollo/client";
 import Repo from "../repo";
-import { CenteredLoader, ListDiv } from "./styled";
+import { CenteredLoader, ListDiv, StyledUl } from "./styled";
 
 interface ListProps {
   searchString: SearchString;
   updateHistory: (searchString: SearchString) => void;
 }
 
-const getRepoList = (repos: GetRepos_search["edges"]) =>
-  (repos as GetRepos_search_edges[]).map(({ node, cursor }) => (
-    <Repo
-      key={cursor}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...(node as GetRepos_search_edges_node_Repository)}
-    />
-  ));
+const getRepoList = (repos: GetRepos_search["edges"]) => (
+  <StyledUl>
+    {(repos as GetRepos_search_edges[]).map(({ node, cursor }) => (
+      <Repo
+        key={cursor}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...(node as GetRepos_search_edges_node_Repository)}
+      />
+    ))}
+  </StyledUl>
+);
 
 const List = ({ searchString, updateHistory }: ListProps) => {
   const [getRepos, { called, loading, data, error, fetchMore }] = useLazyQuery<
