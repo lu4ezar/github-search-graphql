@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<div>
+  <li
+    class="sc-bdVaJa jNclcR"
+  >
+    <div
+      class="sc-bwzfXH NlQRg"
+    >
+      <h3>
+        <a
+          class="sc-ifAKCX gDKNav"
+          href="https://github.com/lu4ezar/github-search-graphql"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="open homepage in new tab"
+        >
+          github-search-graphql
+        </a>
+      </h3>
+      <p>
+        Now with Github API v4! (graphql)
+      </p>
+    </div>
+    <div
+      class="sc-htpNat bdPSob"
+    >
+      <div
+        class="sc-bxivhb gxQjrs"
+      >
+        <div
+          class="not-allowed"
+          title="no homepage"
+        >
+          <svg
+            aria-hidden="true"
+            class="octicon"
+            height="32"
+            role="img"
+            style="display: inline-block; fill: currentColor; user-select: none; vertical-align: middle;"
+            viewBox="0 0 14 16"
+            width="28"
+          >
+            <path
+              d="M7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm0 1.3c1.3 0 2.5.44 3.47 1.17l-8 8A5.755 5.755 0 011.3 8c0-3.14 2.56-5.7 5.7-5.7zm0 11.41c-1.3 0-2.5-.44-3.47-1.17l8-8c.73.97 1.17 2.17 1.17 3.47 0 3.14-2.56 5.7-5.7 5.7z"
+              fill-rule="evenodd"
+            />
+          </svg>
+          <div>
+            No Homepage
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-bxivhb gxQjrs"
+      >
+        <a
+          class="sc-ifAKCX gDKNav"
+          href="https://github.com/lu4ezar/github-search-graphql"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="github page"
+        >
+          <svg
+            aria-hidden="true"
+            class="octicon"
+            height="32"
+            role="img"
+            style="display: inline-block; fill: currentColor; user-select: none; vertical-align: middle;"
+            viewBox="0 0 16 16"
+            width="32"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </a>
+        <div>
+          Github
+        </div>
+      </div>
+      <div
+        class="sc-bxivhb gxQjrs"
+        title="stargazers"
+      >
+        <svg
+          aria-hidden="true"
+          class="octicon"
+          height="32"
+          role="img"
+          style="display: inline-block; fill: currentColor; user-select: none; vertical-align: middle;"
+          viewBox="0 0 14 16"
+          width="28"
+        >
+          <path
+            d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"
+            fill-rule="evenodd"
+          />
+        </svg>
+        <div />
+      </div>
+      <div
+        class="sc-bxivhb gxQjrs"
+        title="watchers"
+      >
+        <svg
+          aria-hidden="true"
+          class="octicon"
+          height="32"
+          role="img"
+          style="display: inline-block; fill: currentColor; user-select: none; vertical-align: middle;"
+          viewBox="0 0 16 16"
+          width="32"
+        >
+          <path
+            d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"
+            fill-rule="evenodd"
+          />
+        </svg>
+        <div />
+      </div>
+    </div>
+  </li>
+</div>
+`;
