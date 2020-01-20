@@ -35,7 +35,9 @@ export const Arrow = styled.span`
     display: none;
   }
 `;
-export const CollapsableListDiv = styled.div`
+export const CollapsableListDiv = styled.ul`
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   max-height: 100%;
   transition: max-height 0.2s;
@@ -47,7 +49,8 @@ export const CollapsableListDiv = styled.div`
     }
   }
 `;
-export const HistoryItem = styled.div`
+export const HistoryItem = styled.li`
+  list-style-type: none;
   text-transform: lowercase;
   font-style: italic;
   cursor: pointer;
