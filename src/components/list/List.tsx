@@ -19,7 +19,7 @@ interface ListProps {
 
 const getRepoList = (repos: GetRepos_search["edges"]) => (
   <StyledUl>
-    {(repos as GetRepos_search_edges[]).map(({ node, cursor }) => (
+    {(repos as GetRepos_search_edges[]).map(({ cursor, node }) => (
       <Repo
         key={cursor}
         // eslint-disable-next-line react/jsx-props-no-spreading
