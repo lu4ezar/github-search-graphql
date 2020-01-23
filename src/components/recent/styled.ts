@@ -7,6 +7,7 @@ export const RecentDiv = styled.div`
 `;
 export const Panel = styled.div`
   display: flex;
+  height: 2rem;
 `;
 export const Button = styled.button`
   background-color: transparent;
@@ -28,9 +29,6 @@ export const Button = styled.button`
 export const Arrow = styled.span`
   position: relative;
   right: -2rem;
-  &.invisible {
-    visibility: collapse;
-  }
   @media (min-width: 1024px) {
     display: none;
   }
@@ -54,7 +52,7 @@ export const HistoryItem = styled.li`
   text-transform: lowercase;
   font-style: italic;
   cursor: pointer;
-  margin: 1rem;
+  margin: 0.5rem;
   font-weight: normal;
   transition: background 0.4s;
   border-radius: 2px;

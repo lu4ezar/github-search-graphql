@@ -38,9 +38,11 @@ const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
       <Panel>
         <Button type="button" onClick={onClick}>
           Search History
-          <Arrow className={!searchHistory.length ? "invisible" : ""}>
-            <Octicon icon={currentIcon} size="medium" />
-          </Arrow>
+          {!!searchHistory.length && (
+            <Arrow title="expand/collapse">
+              <Octicon icon={currentIcon} size="medium" />
+            </Arrow>
+          )}
         </Button>
       </Panel>
       <CollapsableListDiv className={isCollapsed ? "collapsed" : ""}>
