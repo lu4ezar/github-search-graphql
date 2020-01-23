@@ -3,14 +3,14 @@
 exports[`matches the snapshot 1`] = `
 <div>
   <li
-    class="sc-bdVaJa jNclcR"
+    class="sc-AykKC jnSTye"
   >
     <div
-      class="sc-bwzfXH NlQRg"
+      class="sc-AykKD fJQPDH"
     >
       <h3>
         <a
-          class="sc-ifAKCX gDKNav"
+          class="sc-AykKG joSwCD"
           href="https://github.com/lu4ezar/github-search-graphql"
           rel="noopener noreferrer"
           target="_blank"
@@ -24,10 +24,10 @@ exports[`matches the snapshot 1`] = `
       </p>
     </div>
     <div
-      class="sc-htpNat bdPSob"
+      class="sc-AykKE gmcSyi"
     >
       <div
-        class="sc-bxivhb gxQjrs"
+        class="sc-AykKF eusMzF"
       >
         <div
           class="not-allowed"
@@ -53,10 +53,10 @@ exports[`matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="sc-bxivhb gxQjrs"
+        class="sc-AykKF eusMzF"
       >
         <a
-          class="sc-ifAKCX gDKNav"
+          class="sc-AykKG joSwCD"
           href="https://github.com/lu4ezar/github-search-graphql"
           rel="noopener noreferrer"
           target="_blank"
@@ -82,7 +82,7 @@ exports[`matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        class="sc-bxivhb gxQjrs"
+        class="sc-AykKF eusMzF"
         title="stargazers"
       >
         <svg
@@ -102,7 +102,7 @@ exports[`matches the snapshot 1`] = `
         <div />
       </div>
       <div
-        class="sc-bxivhb gxQjrs"
+        class="sc-AykKF eusMzF"
         title="watchers"
       >
         <svg
