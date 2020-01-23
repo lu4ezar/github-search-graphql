@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+.c0 {
+  grid-area: aside_recent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  background-color: transparent;
+  color: #262323;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 {
+  position: relative;
+  right: -2rem;
+}
+
+.c4 {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-height: 100%;
+  -webkit-transition: max-height 0.2s;
+  transition: max-height 0.2s;
+}
+
+.c4.collapsed {
+  max-height: 0px;
+  -webkit-transition: max-height 0.2s;
+  transition: max-height 0.2s;
+}
+
+.c5 {
+  list-style-type: none;
+  text-transform: lowercase;
+  font-style: italic;
+  cursor: pointer;
+  margin: 1rem;
+  font-weight: normal;
+  -webkit-transition: background 0.4s;
+  transition: background 0.4s;
+  border-radius: 2px;
+  padding: 0.2rem;
+  text-align: center;
+}
+
+.c5:hover {
+  background: #e6e6e6;
+}
+
+@media (min-width:1024px) {
+  .c2 {
+    cursor: auto;
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    display: none;
+  }
+}
+
+@media (min-width:1024px) {
+  .c4.collapsed {
+    max-height: 100%;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <button
+        class="c2"
+        type="button"
+      >
+        Search History
+        <span
+          class="c3"
+          title="expand/collapse"
+        >
+          <svg
+            aria-hidden="true"
+            class="octicon"
+            height="32"
+            role="img"
+            style="display: inline-block; fill: currentColor; user-select: none; vertical-align: text-bottom;"
+            viewBox="0 0 10 16"
+            width="20"
+          >
+            <path
+              d="M5 11L0 6l1.5-1.5L5 8.25 8.5 4.5 10 6l-5 5z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <ul
+      class="c4 collapsed"
+    >
+      <li
+        class="c5"
+        role="button"
+        tabindex="0"
+        title="search for \\"abc\\" again"
+      >
+        abc
+      </li>
+      <li
+        class="c5"
+        role="button"
+        tabindex="1"
+        title="search for \\"def\\" again"
+      >
+        def
+      </li>
+      <li
+        class="c5"
+        role="button"
+        tabindex="2"
+        title="search for \\"ghi\\" again"
+      >
+        ghi
+      </li>
+    </ul>
+  </div>
+</div>
+`;
