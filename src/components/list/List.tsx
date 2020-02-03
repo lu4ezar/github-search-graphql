@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useEffect, SyntheticEvent } from "react";
+import Loader from "react-loader-spinner";
 import { useLazyQuery } from "@apollo/react-hooks";
 import {
   GetRepos_search,
@@ -10,7 +11,7 @@ import {
 import { SearchString } from "../../interfaces";
 import { QUERY } from "../../apollo/client";
 import Repo from "../repo";
-import { CenteredLoader, ListDiv, StyledUl } from "./styled";
+import { SpinnerWrapper, ListDiv, StyledUl } from "./styled";
 
 interface ListProps {
   searchString: SearchString;
@@ -95,7 +96,9 @@ const List = ({ searchString, updateHistory }: ListProps) => {
         return <p>Error! Sorry there was an error!</p>;
       case called && loading:
         return (
-          <CenteredLoader type="Oval" color="gray" height={100} width={100} />
+          <SpinnerWrapper data-testid="spinner">
+            <Loader type="Oval" color="gray" height={100} width={100} />
+          </SpinnerWrapper>
         );
       case !!dataLength:
         return data ? getRepoList(data.search.edges) : null;
