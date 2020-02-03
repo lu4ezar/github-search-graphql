@@ -36,7 +36,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
   >(QUERY, {
     onCompleted: () => {
       if (error) return;
-      if (data?.search?.edges?.length) {
+      if (data?.search.edges?.length) {
         updateHistory(searchString);
       }
     },
@@ -64,8 +64,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
       return undefined;
     }
     const { edges } = data.search;
-    const lastItemCursor =
-      edges !== null ? edges[edges.length - 1]!.cursor : "";
+    const lastItemCursor = edges !== null && edges[edges.length - 1]!.cursor;
     return fetchMore({
       variables: {
         after: lastItemCursor
@@ -88,7 +87,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
     });
   };
 
-  const dataLength = data?.search?.edges?.length;
+  const dataLength = data?.search.edges?.length;
 
   const getListContent = () => {
     switch (true) {
@@ -101,7 +100,7 @@ const List = ({ searchString, updateHistory }: ListProps) => {
           </SpinnerWrapper>
         );
       case !!dataLength:
-        return data ? getRepoList(data.search.edges) : null;
+        return getRepoList((data as GetRepos).search.edges);
       default:
         return null;
     }
