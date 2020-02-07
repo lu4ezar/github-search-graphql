@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "../repo/styled";
 
 export const FooterDiv = styled.div`
   grid-area: footer;
@@ -15,5 +16,10 @@ export const TextLink = styled.div`
   display: none;
   @media (min-width: 576px) {
     display: flex;
+  }
+`;
+export const SVGLink = styled(Link)`
+  @media (max-width: 1023px) {
+    margin: 0.3rem 0;
   }
 `;
