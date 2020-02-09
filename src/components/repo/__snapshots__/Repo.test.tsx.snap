@@ -99,7 +99,9 @@ exports[`matches the snapshot 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-        <div />
+        <div>
+          0
+        </div>
       </div>
       <div
         class="sc-AykKF eusMzF"
@@ -119,7 +121,9 @@ exports[`matches the snapshot 1`] = `
             fill-rule="evenodd"
           />
         </svg>
-        <div />
+        <div>
+          1
+        </div>
       </div>
     </div>
   </li>
