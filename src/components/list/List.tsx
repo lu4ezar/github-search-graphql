@@ -2,7 +2,6 @@
 import React from "react";
 import Loader from "react-loader-spinner";
 import {
-  GetRepos_search,
   GetRepos_search_edges,
   GetRepos_search_edges_node_Repository
 } from "../../apollo/client/__generated__/GetRepos";
@@ -11,20 +10,20 @@ import Repo from "../repo";
 
 import { SpinnerWrapper, ListDiv, StyledUl } from "./styled";
 
-const getRepoList = (repos: GetRepos_search["edges"]) => (
-  <StyledUl>
-    {(repos as GetRepos_search_edges[]).map(({ cursor, node }) => (
-      <Repo
-        key={cursor}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...(node as GetRepos_search_edges_node_Repository)}
-      />
-    ))}
-  </StyledUl>
-);
-
 const List = (props: ListProps) => {
   const { loading, repos = [], error, scrollFetchMore } = useCustomQuery(props);
+
+  const getRepoList = () => (
+    <StyledUl onScroll={scrollFetchMore}>
+      {(repos as GetRepos_search_edges[]).map(({ cursor, node }) => (
+        <Repo
+          key={cursor}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...(node as GetRepos_search_edges_node_Repository)}
+        />
+      ))}
+    </StyledUl>
+  );
 
   const getListContent = () => {
     switch (true) {
@@ -37,16 +36,14 @@ const List = (props: ListProps) => {
           </SpinnerWrapper>
         );
       case !!repos.length:
-        return getRepoList(repos);
+        return getRepoList();
       default:
         return null;
     }
   };
 
   return (
-    <ListDiv className={repos.length && "filled"} onScroll={scrollFetchMore}>
-      {getListContent()}
-    </ListDiv>
+    <ListDiv className={repos.length && "filled"}>{getListContent()}</ListDiv>
   );
 };
 
