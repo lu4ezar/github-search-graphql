@@ -14,7 +14,7 @@ const List = (props: ListProps) => {
   const { loading, repos = [], error, scrollFetchMore } = useCustomQuery(props);
 
   const getRepoList = () => (
-    <StyledUl onScroll={scrollFetchMore}>
+    <StyledUl>
       {(repos as GetRepos_search_edges[]).map(({ cursor, node }) => (
         <Repo
           key={cursor}
@@ -43,7 +43,9 @@ const List = (props: ListProps) => {
   };
 
   return (
-    <ListDiv className={repos.length && "filled"}>{getListContent()}</ListDiv>
+    <ListDiv className={repos.length && "filled"} onScroll={scrollFetchMore}>
+      {getListContent()}
+    </ListDiv>
   );
 };
 
