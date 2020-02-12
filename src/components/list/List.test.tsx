@@ -47,8 +47,10 @@ describe("List component", () => {
 
   it("calls scrollFetchMore function when user has scrolled to bottom", async () => {
     const scrollFetchMore = jest.fn();
-    const { getByRole } = renderList();
-    const scrollContainer = await waitForElement(() => getByRole("list"));
+    const { container } = renderList();
+    const scrollContainer = await waitForElement(
+      () => container.firstElementChild as HTMLDivElement
+    );
     scrollContainer.addEventListener("scroll", scrollFetchMore);
     fireEvent.scroll(scrollContainer, {
       target: { scrollY: 100 }
