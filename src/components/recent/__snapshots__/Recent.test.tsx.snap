@@ -76,6 +76,7 @@ exports[`matches the snapshot 1`] = `
   border-radius: 2px;
   padding: 0.2rem;
   text-align: center;
+  outline: none;
 }
 
 .c5:hover {

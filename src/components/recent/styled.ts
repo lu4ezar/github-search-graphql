@@ -58,6 +58,7 @@ export const HistoryItem = styled.li`
   border-radius: 2px;
   padding: 0.2rem;
   text-align: center;
+  outline: none;
   &:hover {
     background: #e6e6e6;
   }
