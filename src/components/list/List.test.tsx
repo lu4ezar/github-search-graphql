@@ -3,7 +3,8 @@ import {
   render,
   waitForElement,
   fireEvent,
-  waitForElementToBeRemoved
+  waitForElementToBeRemoved,
+  act
 } from "@testing-library/react";
 import { MockedProvider } from "@apollo/react-testing";
 import List from "./List";
@@ -39,22 +40,25 @@ describe("List component", () => {
   it("shows repos list with 'filled' classname if request was successful", async () => {
     const { container, getAllByRole } = renderList();
     const listItems = await waitForElement(() => getAllByRole("listitem"));
-    expect(listItems).toHaveLength(3);
+    expect(listItems).toHaveLength(1);
     expect(
       (container.firstChild as HTMLElement).classList.contains("filled")
     ).toBe(true);
   });
 
   it("calls scrollFetchMore function when user has scrolled to bottom", async () => {
-    const scrollFetchMore = jest.fn();
-    const { container } = renderList();
-    const scrollContainer = await waitForElement(
-      () => container.firstElementChild as HTMLDivElement
-    );
+    const promise = Promise.resolve();
+    const scrollFetchMore = jest.fn(() => promise);
+    const { getByRole, getAllByRole } = renderList("styled");
+    const scrollContainer = await waitForElement(() => getByRole("list"));
+    const list = await waitForElement(() => getAllByRole("listitem"));
+    expect(list).toHaveLength(1);
     scrollContainer.addEventListener("scroll", scrollFetchMore);
     fireEvent.scroll(scrollContainer, {
       target: { scrollY: 100 }
     });
     expect(scrollFetchMore).toBeCalled();
+    expect(scrollFetchMore).toBeCalledTimes(1);
+    await act(() => promise);
   });
 });
