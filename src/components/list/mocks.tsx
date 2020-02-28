@@ -14,6 +14,14 @@ const request = {
   }
 };
 
+const requestFetchMore = {
+  query: QUERY,
+  variables: {
+    searchString: "styled",
+    after: "Y3Vyc29yOjE="
+  }
+};
+
 const requestError = {
   query: QUERY,
   variables: {
@@ -42,7 +50,17 @@ const result = {
           },
           cursor: "Y3Vyc29yOjE=",
           __typename: "SearchResultItemEdge"
-        },
+        }
+      ]
+    }
+  }
+};
+
+const resultFetchMore = {
+  data: {
+    search: {
+      __typename: "SearchResultItemConnection",
+      edges: [
         {
           node: {
             __typename: "Repository",
@@ -58,22 +76,6 @@ const result = {
           },
           cursor: "Y3Vyc29yOjI=",
           __typename: "SearchResultItemEdge"
-        },
-        {
-          node: {
-            __typename: "Repository",
-            homepageUrl: "http://npmjs.com/styled-jsx",
-            name: "styled-jsx",
-            description: "Full CSS support for JSX without compromises",
-            url: "https://github.com/zeit/styled-jsx",
-            stargazers: {
-              totalCount: 5125,
-              __typename: "StargazerConnection"
-            },
-            watchers: { totalCount: 54, __typename: "UserConnection" }
-          },
-          cursor: "Y3Vyc29yOjM=",
-          __typename: "SearchResultItemEdge"
         }
       ]
     }
@@ -86,6 +88,10 @@ const mocks = [
   {
     request,
     result
+  },
+  {
+    request: requestFetchMore,
+    result: resultFetchMore
   },
   {
     request: requestError,
