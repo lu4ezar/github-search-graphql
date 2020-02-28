@@ -10,16 +10,17 @@ export interface ListProps {
 }
 
 const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
+  const variables = {
+    searchString
+  };
+  const onCompleted = () => {
+    updateHistory(searchString);
+  };
   const [getQuery, { data, loading, error, fetchMore }] = useApolloLazyQuery(
     QUERY,
     {
-      variables: {
-        searchString
-      },
-      partialRefetch: true,
-      onCompleted: () => {
-        updateHistory(searchString);
-      }
+      variables,
+      onCompleted
     }
   );
 
@@ -45,18 +46,18 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     };
   };
 
-  const scrollFetchMore = async (e: SyntheticEvent) => {
+  const scrollFetchMore = (e: SyntheticEvent) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
     const listBottom = scrollHeight - scrollTop === clientHeight;
-    if (!listBottom || !data) {
+    if (!listBottom) {
       return undefined;
     }
-    const { edges } = data.search;
+    const { edges } = data?.search;
     const lastItemCursor = edges[edges.length - 1].cursor;
 
     // https://github.com/apollographql/apollo-client/issues/4114#issuecomment-502111099
     try {
-      return await fetchMore({
+      return fetchMore({
         variables: {
           after: lastItemCursor
         },
