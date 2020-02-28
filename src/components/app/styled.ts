@@ -32,6 +32,7 @@ const Container = styled.div`
     box-shadow: 2px 5px 10px #262323;
     background: ghostwhite;
     padding: 0 1rem;
+    text-align: center;
     @media (min-width: 1024px) {
       padding: 1rem;
     }
