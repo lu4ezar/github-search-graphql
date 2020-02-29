@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Recent from "./Recent";
 import "jest-styled-components";
 
@@ -14,14 +14,8 @@ const recentPropsNoData = {
   getSearchStringFromHistory: jest.fn()
 };
 
-const renderComponent = () => ({
-  ...render(<Recent {...recentProps} />)
-});
-const renderComponentNoData = () => ({
-  ...render(<Recent {...recentPropsNoData} />)
-});
-
-afterEach(cleanup);
+const renderComponent = () => render(<Recent {...recentProps} />);
+const renderComponentNoData = () => render(<Recent {...recentPropsNoData} />);
 
 it("matches the snapshot", () => {
   const { container } = renderComponent();
