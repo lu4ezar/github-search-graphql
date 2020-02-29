@@ -10,13 +10,12 @@ import { MockedProvider } from "@apollo/react-testing";
 import List from "./List";
 import mocks from "./mocks";
 
-const renderList = (variable = "styled") => ({
-  ...render(
+const renderList = (variable = "styled") =>
+  render(
     <MockedProvider mocks={mocks} addTypename>
       <List updateHistory={jest.fn()} searchString={variable} />
     </MockedProvider>
-  )
-});
+  );
 
 describe("List component", () => {
   it("renders without errors", () => {
