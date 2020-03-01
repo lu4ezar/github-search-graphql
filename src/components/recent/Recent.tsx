@@ -16,13 +16,17 @@ interface RecentProps {
 
 const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
   const [isCollapsed, changeCollapseState] = useState(true);
+  const handleClick = (searchWord: string) => {
+    changeCollapseState(true);
+    getSearchStringFromHistory(searchWord);
+  };
   const list = searchHistory.length
     ? searchHistory.map((searchWord, index: number) => (
         <HistoryItem
           title={`search for "${searchWord}" again`}
           key={searchWord}
-          onClick={() => getSearchStringFromHistory(searchWord)}
-          onKeyDown={() => getSearchStringFromHistory(searchWord)}
+          onClick={() => handleClick(searchWord)}
+          onKeyDown={() => handleClick(searchWord)}
           role="button"
           tabIndex={index}
         >
