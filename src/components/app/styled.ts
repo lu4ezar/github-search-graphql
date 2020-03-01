@@ -4,6 +4,7 @@ const Container = styled.div`
   height: 100%;
   box-sizing: border-box;
   display: grid;
+  background: #b59797;
   grid-gap: 1rem;
   padding: 1rem;
   grid-template-rows: auto auto 1fr auto auto;
@@ -30,7 +31,7 @@ const Container = styled.div`
   & > div {
     border-radius: 4px;
     box-shadow: 2px 5px 10px #262323;
-    background: ghostwhite;
+    background: azure;
     padding: 0 1rem;
     text-align: center;
     @media (min-width: 1024px) {
