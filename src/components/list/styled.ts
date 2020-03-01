@@ -4,6 +4,7 @@ export const ListDiv = styled.div`
   grid-area: list;
   overflow: auto;
   display: flex;
+  position: relative;
   flex-direction: column;
   padding: 1em;
   &.filled {
