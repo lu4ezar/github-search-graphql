@@ -32,7 +32,7 @@ const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
     : null;
   const onClick = () =>
     isCollapsed ? changeCollapseState(false) : changeCollapseState(true);
-  const currentIcon = isCollapsed ? ChevronDown : ChevronUp;
+  const currentIcon = isCollapsed ? ChevronUp : ChevronDown;
   return (
     <RecentDiv>
       <Panel>
