@@ -11,11 +11,7 @@ export const ListDiv = styled.div`
     border-radius: 12px;
   }
 `;
-export const SpinnerWrapper = styled.div`
-  display: flex;
-  align-self: center;
-  margin: auto;
-`;
+
 export const StyledUl = styled.ul`
   padding: 0;
   margin: 0;
