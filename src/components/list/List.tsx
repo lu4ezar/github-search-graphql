@@ -25,26 +25,12 @@ const List = (props: ListProps) => {
     </StyledUl>
   );
 
-  const getListContent = () => {
-    switch (true) {
-      case !!error:
-        return <p>{error}</p>;
-      case loading:
-        return (
-          <SpinnerWrapper data-testid="spinner">
-            <Loader type="Oval" color="gray" height={100} width={100} />
-          </SpinnerWrapper>
-        );
-      case !!repos.length:
-        return getRepoList();
-      default:
-        return null;
-    }
-  };
-
   return (
     <ListDiv className={repos.length && "filled"} onScroll={scrollFetchMore}>
-      {getListContent()}
+      {error ? <p>{error}</p> : getRepoList()}
+      <SpinnerWrapper data-testid="spinner">
+        <Loader type="Oval" color="gray" height={100} width={100} />
+      </SpinnerWrapper>
     </ListDiv>
   );
 };
