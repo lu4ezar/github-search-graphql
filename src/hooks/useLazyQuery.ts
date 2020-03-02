@@ -48,8 +48,7 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
 
   const scrollFetchMore = (e: SyntheticEvent) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
-    const listBottom = scrollHeight - scrollTop === clientHeight;
-    if (!listBottom) {
+    const listBottom = scrollHeight - scrollTop <= clientHeight + 100;
       return undefined;
     }
     const { edges } = data?.search;
