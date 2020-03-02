@@ -15,9 +15,6 @@ const App = () => {
   const [searchHistory, setHistory] = useState([] as SearchString[]);
 
   const updateHistory = (newSearch: SearchString) => {
-    if (!newSearch.length) {
-      return;
-    }
     if (!searchHistory.includes(newSearch)) {
       const newLength = searchHistory.unshift(newSearch);
       if (newLength > HISTORY_MAX_SIZE) {

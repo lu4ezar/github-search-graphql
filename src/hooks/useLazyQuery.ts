@@ -10,23 +10,14 @@ export interface ListProps {
 }
 
 const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
-  const variables = {
-    searchString
-  };
-  const onCompleted = () => {
-    updateHistory(searchString);
-  };
-  const [getQuery, { data, loading, error, fetchMore }] = useApolloLazyQuery(
-    QUERY,
-    {
-      variables,
-      onCompleted
-    }
-  );
-
-  useEffect(() => {
-    if (searchString.length > 3) {
-      getQuery();
+  const { data, loading, error, fetchMore } = useApolloLazyQuery(QUERY, {
+    variables: {
+      searchString
+    },
+    onCompleted: () => {
+      if (searchString && !error) {
+        updateHistory(searchString);
+      }
     }
   }, [getQuery, searchString]);
 
