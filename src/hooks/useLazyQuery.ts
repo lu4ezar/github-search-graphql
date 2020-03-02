@@ -14,12 +14,13 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     variables: {
       searchString
     },
+    notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       if (searchString && !error) {
         updateHistory(searchString);
       }
     }
-  }, [getQuery, searchString]);
+  });
 
   const updateQuery = (
     prev: GetRepos,
