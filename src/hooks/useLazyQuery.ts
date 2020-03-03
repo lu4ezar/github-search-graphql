@@ -1,5 +1,5 @@
-import { useEffect, SyntheticEvent } from "react";
-import { useLazyQuery as useApolloLazyQuery } from "@apollo/react-hooks";
+import { SyntheticEvent } from "react";
+import { useQuery as useApolloQuery } from "@apollo/react-hooks";
 import { QUERY } from "../apollo/client";
 import { GetRepos } from "../apollo/client/__generated__/GetRepos";
 import { SearchString } from "../interfaces";
@@ -10,11 +10,12 @@ export interface ListProps {
 }
 
 const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
-  const { data, loading, error, fetchMore } = useApolloLazyQuery(QUERY, {
+  const { data, loading, error, fetchMore } = useApolloQuery(QUERY, {
     variables: {
       searchString
     },
     notifyOnNetworkStatusChange: true,
+    skip: !searchString || searchString.length < 4,
     onCompleted: () => {
       if (searchString && !error) {
         updateHistory(searchString);
