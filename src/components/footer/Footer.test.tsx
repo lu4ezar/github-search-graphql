@@ -15,8 +15,12 @@ it("renders text link", () => {
   expect(textLink).toBeInTheDocument();
 });
 
-it("renders svg link", () => {
+it("renders svg link to github source page", () => {
   const { getByTitle } = render(<Footer />);
   const svgLink = getByTitle("view src on Github");
   expect(svgLink).toBeInTheDocument();
+  expect(svgLink).toHaveAttribute(
+    "href",
+    "https://github.com/lu4ezar/github-search-graphql"
+  );
 });
