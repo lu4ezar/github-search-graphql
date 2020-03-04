@@ -4,7 +4,8 @@ import {
   GetRepos_search_edges,
   GetRepos_search_edges_node_Repository
 } from "../../apollo/client/__generated__/GetRepos";
-import useCustomQuery, { ListProps } from "../../hooks/useLazyQuery";
+import { ListProps } from "../../interfaces";
+import useCustomQuery from "../../hooks/useLazyQuery";
 import Repo from "../repo";
 import Spinner from "../spinner";
 import { ListDiv, StyledUl } from "./styled";

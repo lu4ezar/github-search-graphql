@@ -20,8 +20,8 @@ const repoProps: RepoProps = {
   }
 };
 
-const renderComponent = ({ ...additionalProps } = {}) =>
-  render(<Repo {...repoProps} {...additionalProps} />);
+const renderComponent = (props?: Partial<RepoProps>) =>
+  render(<Repo {...repoProps} {...props} />);
 
 it("matches the snapshot", () => {
   const { container } = renderComponent();

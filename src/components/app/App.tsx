@@ -6,13 +6,13 @@ import Input from "../input";
 import Recent from "../recent";
 import List from "../list";
 import Container from "./styled";
-import { SearchString } from "../../interfaces";
+import { SearchString, SearchHistory } from "../../interfaces";
 
 const HISTORY_MAX_SIZE = 10;
 
 const App = () => {
   const [searchString, setSearchString] = useState("");
-  const [searchHistory, setHistory] = useState([] as SearchString[]);
+  const [searchHistory, setHistory] = useState([] as SearchHistory);
 
   const updateHistory = (newSearch: SearchString) => {
     if (!searchHistory.includes(newSearch)) {

@@ -8,15 +8,11 @@ import {
   Button,
   CollapsableListDiv
 } from "./styled";
-
-interface RecentProps {
-  searchHistory: string[];
-  getSearchStringFromHistory: (str: string) => void;
-}
+import { SearchString, RecentProps } from "../../interfaces";
 
 const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
   const [isCollapsed, changeCollapseState] = useState(true);
-  const handleClick = (searchWord: string) => {
+  const handleClick = (searchWord: SearchString) => {
     changeCollapseState(true);
     getSearchStringFromHistory(searchWord);
   };

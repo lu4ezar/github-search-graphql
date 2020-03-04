@@ -1,11 +1,6 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { InputDiv, Clear } from "./styled";
-
-interface InputProps {
-  value: string | number | string[] | undefined;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  clearInput: () => void;
-}
+import { InputProps } from "../../interfaces";
 
 const Input = ({ value, onChange, clearInput }: InputProps) => (
   <InputDiv>

@@ -3,22 +3,16 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Recent from "./Recent";
 import "jest-styled-components";
+import { RecentProps } from "../../interfaces";
 
-interface TestRecentProps {
-  searchHistory?: string[];
-  getSearchStringFromHistory?: () => void;
-}
-
-const renderRecent = (props?: TestRecentProps) => {
-  const utils = render(
+const renderRecent = (props?: Partial<RecentProps>) =>
+  render(
     <Recent
       searchHistory={["abc", "def", "ghi"]}
       getSearchStringFromHistory={jest.fn()}
       {...props}
     />
   );
-  return { ...utils };
-};
 
 it("matches the snapshot", () => {
   const { container } = renderRecent();
@@ -77,7 +71,7 @@ it("does not show 'Collapse/Expand' button on desktop", () => {
 
 it("does not show 'Collapse/Expand' button if list is empty", () => {
   const { queryByTitle } = renderRecent({
-    searchHistory: []
+    searchHistory: [] as RecentProps["searchHistory"]
   });
   const icon = queryByTitle(/expand/i);
   expect(icon).toBe(null);

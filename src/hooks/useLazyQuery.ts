@@ -2,12 +2,7 @@ import { SyntheticEvent } from "react";
 import { useQuery as useApolloQuery } from "@apollo/react-hooks";
 import { QUERY } from "../apollo/client";
 import { GetRepos } from "../apollo/client/__generated__/GetRepos";
-import { SearchString } from "../interfaces";
-
-export interface ListProps {
-  searchString: SearchString;
-  updateHistory: (searchString: SearchString) => void;
-}
+import { ListProps } from "../interfaces";
 
 const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
   const { data, loading, error, fetchMore } = useApolloQuery(QUERY, {
