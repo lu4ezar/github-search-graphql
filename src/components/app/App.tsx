@@ -29,7 +29,7 @@ const App = () => {
   const setInputValue = (value: SearchString) => {
     setSearchString(value);
   };
-  const clearInput = (): void => {
+  const clearInput = () => {
     setSearchString("");
   };
   return (
