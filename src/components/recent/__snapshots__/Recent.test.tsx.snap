@@ -136,6 +136,7 @@ exports[`matches the snapshot 1`] = `
     </div>
     <ul
       class="c4 collapsed"
+      data-testid="history"
     >
       <li
         class="c5"
