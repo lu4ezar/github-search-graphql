@@ -40,9 +40,7 @@ describe("List component", () => {
     const { container, getAllByRole } = renderList();
     const listItems = await waitForElement(() => getAllByRole("listitem"));
     expect(listItems).toHaveLength(1);
-    expect(
-      (container.firstChild as HTMLElement).classList.contains("filled")
-    ).toBe(true);
+    expect(container.classList.contains("filled")).toBe(true);
   });
 
   it("calls scrollFetchMore function when user has scrolled to bottom", async () => {
