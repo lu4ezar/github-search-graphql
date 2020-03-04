@@ -49,7 +49,10 @@ const Recent = ({ searchHistory, getSearchStringFromHistory }: RecentProps) => {
           )}
         </Button>
       </Panel>
-      <CollapsableListDiv className={isCollapsed ? "collapsed" : ""}>
+      <CollapsableListDiv
+        className={isCollapsed ? "collapsed" : ""}
+        data-testid="history"
+      >
         {list}
       </CollapsableListDiv>
     </RecentDiv>

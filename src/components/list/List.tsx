@@ -25,7 +25,11 @@ const List = (props: ListProps) => {
   );
 
   return (
-    <ListDiv className={repos.length && "filled"} onScroll={scrollFetchMore}>
+    <ListDiv
+      className={repos.length && "filled"}
+      onScroll={scrollFetchMore}
+      data-testid="repoList"
+    >
       {error ? <p>{error}</p> : getRepoList()}
       <Spinner loading={loading} />
     </ListDiv>
