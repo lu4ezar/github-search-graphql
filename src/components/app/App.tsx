@@ -7,21 +7,15 @@ import Recent from "../recent";
 import List from "../list";
 import Container from "./styled";
 import { SearchString, SearchHistory } from "../../interfaces";
-
-const HISTORY_MAX_SIZE = 10;
+import updateHistory from "./utils/updateHistory";
 
 const App = () => {
   const [searchString, setSearchString] = useState("");
   const [searchHistory, setHistory] = useState([] as SearchHistory);
 
-  const updateHistory = (newSearch: SearchString) => {
-    if (!searchHistory.includes(newSearch)) {
-      const newLength = searchHistory.unshift(newSearch);
-      if (newLength > HISTORY_MAX_SIZE) {
-        searchHistory.pop();
-      }
-      setHistory([...searchHistory]);
-    }
+  const handleHistory = () => {
+    const updatedHistory = updateHistory(searchString, [...searchHistory]);
+    setHistory(updatedHistory);
   };
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchString(event.currentTarget.value);
@@ -40,7 +34,7 @@ const App = () => {
         searchHistory={searchHistory}
         getSearchStringFromHistory={setInputValue}
       />
-      <List searchString={searchString} updateHistory={updateHistory} />
+      <List searchString={searchString} updateHistory={handleHistory} />
       <Footer />
     </Container>
   );
