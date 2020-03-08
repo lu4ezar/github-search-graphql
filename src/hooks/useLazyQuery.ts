@@ -12,9 +12,7 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     notifyOnNetworkStatusChange: true,
     skip: !searchString || searchString.length < 4,
     onCompleted: () => {
-      if (searchString && !error) {
-        updateHistory(searchString);
-      }
+      updateHistory(searchString);
     }
   });
 
