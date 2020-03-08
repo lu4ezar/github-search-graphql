@@ -19,7 +19,7 @@ const renderList = (variable = "styled") =>
 
 describe("List component", () => {
   it("renders without errors", () => {
-    const { container } = renderList("");
+    const { container } = renderList();
     expect(container).toBeInTheDocument();
   });
 

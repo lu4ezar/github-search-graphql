@@ -1,12 +1,5 @@
 import { QUERY } from "../../apollo/client";
 
-const preRequest = {
-  query: QUERY,
-  variables: {
-    searchString: ""
-  }
-};
-
 const request = {
   query: QUERY,
   variables: {
@@ -82,7 +75,7 @@ const resultFetchMore = {
   }
 };
 
-const error = new Error("error!");
+const resultError = new Error("error!");
 
 const mocks = [
   {
@@ -95,10 +88,7 @@ const mocks = [
   },
   {
     request: requestError,
-    error
-  },
-  {
-    request: preRequest
+    error: resultError
   }
 ];
 
