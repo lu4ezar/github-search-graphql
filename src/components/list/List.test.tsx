@@ -3,8 +3,7 @@ import {
   render,
   waitForElement,
   fireEvent,
-  waitForElementToBeRemoved,
-  act
+  waitForElementToBeRemoved
 } from "@testing-library/react";
 import { MockedProvider } from "@apollo/react-testing";
 import List from "./List";
@@ -45,19 +44,39 @@ describe("List component", () => {
     ).toBe(true);
   });
 
-  it("calls scrollFetchMore function when user has scrolled to bottom", async () => {
-    const promise = Promise.resolve();
-    const scrollFetchMore = jest.fn(() => promise);
-    const { getByRole, getAllByRole } = renderList("styled");
-    const scrollContainer = await waitForElement(() => getByRole("list"));
-    const list = await waitForElement(() => getAllByRole("listitem"));
-    expect(list).toHaveLength(1);
-    scrollContainer.addEventListener("scroll", scrollFetchMore);
-    fireEvent.scroll(scrollContainer, {
-      target: { scrollY: 100 }
+  it("updates repo list when user has scrolled to bottom", async () => {
+    const handleScroll = jest.fn();
+    const { getByTestId, queryByTestId, getAllByRole } = renderList("styled");
+
+    expect(getByTestId("spinner")).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => getByTestId("spinner"));
+
+    // got initial request results
+    expect(getAllByRole("listitem")).toHaveLength(1);
+
+    const scrollContainer = getByTestId("repoList");
+    scrollContainer.addEventListener("scroll", handleScroll);
+
+    // set required for testing scroll container measurements
+    Object.defineProperties(scrollContainer, {
+      clientHeight: { value: 100, writable: true },
+      scrollHeight: { value: 900, writable: true },
+      scrollTop: { value: 0, writable: true }
     });
-    expect(scrollFetchMore).toBeCalled();
-    expect(scrollFetchMore).toBeCalledTimes(1);
-    await act(() => promise);
+
+    // scroll event fires handleScroll function but does not call request
+    fireEvent.scroll(scrollContainer);
+    expect(handleScroll).toBeCalledTimes(1);
+    expect(queryByTestId("spinner")).not.toBeInTheDocument();
+    expect(getAllByRole("listitem")).toHaveLength(1);
+
+    // scrolling to bottom fires next request
+    scrollContainer.scrollTop =
+      scrollContainer.scrollHeight - scrollContainer.clientHeight;
+    fireEvent.scroll(scrollContainer);
+    expect(getByTestId("spinner")).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => getByTestId("spinner"));
+    expect(handleScroll).toBeCalledTimes(2);
+    expect(getAllByRole("listitem")).toHaveLength(2);
   });
 });
