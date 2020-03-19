@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import {
   GetRepos_search_edges,
   GetRepos_search_edges_node_Repository
@@ -11,8 +11,17 @@ import Spinner from "../spinner";
 import { ListDiv, StyledUl } from "./styled";
 
 const List = (props: ListProps) => {
-  const { loading, repos = [], error, scrollFetchMore } = useCustomQuery(props);
+  const { loading, repos = [], error, fetchMore } = useCustomQuery(props);
 
+  const handleScroll = (e: SyntheticEvent) => {
+    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
+    // 100 pixels added for mobile browsers with dynamic controls (Opera Touch)
+    const listBottom = scrollHeight - scrollTop <= clientHeight + 100;
+    // repos.length check prevents onScroll event from firing on window.resize
+    if (listBottom && repos.length && !loading) {
+      fetchMore();
+    }
+  };
   const getRepoList = () => (
     <StyledUl>
       {(repos as GetRepos_search_edges[]).map(({ cursor, node }) => (
@@ -28,7 +37,7 @@ const List = (props: ListProps) => {
   return (
     <ListDiv
       className={repos.length && "filled"}
-      onScroll={scrollFetchMore}
+      onScroll={handleScroll}
       data-testid="repoList"
     >
       {error ? <p>{error}</p> : getRepoList()}

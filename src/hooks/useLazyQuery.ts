@@ -1,4 +1,3 @@
-import { SyntheticEvent } from "react";
 import { useQuery as useApolloQuery } from "@apollo/react-hooks";
 import { QUERY } from "../apollo/client";
 import { GetRepos } from "../apollo/client/__generated__/GetRepos";
@@ -32,16 +31,9 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     };
   };
 
-  const scrollFetchMore = (e: SyntheticEvent) => {
-    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
-    const listBottom = scrollHeight - scrollTop <= clientHeight + 100;
-    // scrollTop === 0 check prevents onScroll event form firing on window.resize
-    if (!listBottom || loading || scrollTop === 0) {
-      return undefined;
-    }
-    const { edges } = data?.search;
+  const fetchMoreRepos = () => {
+    const { edges } = data.search;
     const lastItemCursor = edges[edges.length - 1].cursor;
-
     // https://github.com/apollographql/apollo-client/issues/4114#issuecomment-502111099
     try {
       return fetchMore({
@@ -59,7 +51,7 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     loading,
     repos: data?.search?.edges,
     error: error?.message,
-    scrollFetchMore
+    fetchMore: fetchMoreRepos
   };
 };
 
