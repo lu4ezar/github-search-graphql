@@ -2,7 +2,7 @@ import React from "react";
 import {
   render,
   fireEvent,
-  waitForElementToBeRemoved,
+  waitForElement,
   within
 } from "@testing-library/react";
 import { MockedProvider } from "@apollo/react-testing";
@@ -15,19 +15,6 @@ const renderApp = () =>
       <App />
     </MockedProvider>
   );
-
-const performQuery = async (word = "styled") => {
-  const utils = renderApp();
-  const input = utils.getByRole("searchbox");
-  fireEvent.change(input, {
-    target: {
-      value: word
-    }
-  });
-  expect(utils.getByTestId("spinner")).toBeInTheDocument();
-  await waitForElementToBeRemoved(() => utils.getByTestId("spinner"));
-  return utils;
-};
 
 describe("App component", () => {
   it("renders without crashing", () => {
@@ -45,8 +32,10 @@ describe("App component", () => {
         value: "styled"
       }
     });
-    expect(utils.getByTestId("spinner")).toBeInTheDocument();
-    await waitForElementToBeRemoved(() => utils.getByTestId("spinner"));
+    // waiting for search results to show up
+    const repoList = utils.getByTestId("repoList");
+    await waitForElement(() => within(repoList).getAllByRole("listitem"));
+
     items = within(historyContainer).queryAllByRole("button");
     expect(items).toHaveLength(1);
   });
@@ -60,17 +49,30 @@ describe("App component", () => {
       }
     });
     expect(input.value).toEqual("styled");
-    const closeButton = getByTitle(/clear/i);
-    fireEvent.click(closeButton);
+    const clearButton = getByTitle(/clear/i);
+    fireEvent.click(clearButton);
     expect(input.value).toEqual("");
   });
 
   it("sets input value by clicking history list item", async () => {
-    const utils = await performQuery();
+    const utils = renderApp();
+    const input = utils.getByRole("searchbox") as HTMLInputElement;
+    fireEvent.change(input, {
+      target: {
+        value: "styled"
+      }
+    });
+    // waiting for search results to show up
+    const repoList = utils.getByTestId("repoList");
+    await waitForElement(() => within(repoList).getAllByRole("listitem"));
+    // clear input
+    const clearButton = utils.getByTitle(/clear/i);
+    fireEvent.click(clearButton);
+    expect(input.value).toEqual("");
+    // click on history item
     const historyComponent = utils.getByTestId("history");
     const historyItem = within(historyComponent).getByText(/styled/i);
     fireEvent.click(historyItem);
-    const input = utils.getByRole("searchbox") as HTMLInputElement;
     expect(input.value).toEqual("styled");
   });
 });
