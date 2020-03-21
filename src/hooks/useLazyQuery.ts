@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import debounce from "lodash.debounce";
 import { useLazyQuery as useApolloQuery } from "@apollo/react-hooks";
 import { QUERY } from "../apollo/client";
 import { GetRepos } from "../apollo/client/__generated__/GetRepos";
@@ -16,9 +17,11 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
   );
 
   useEffect(() => {
+    const getQueryDebounce = debounce(getQuery, 500);
     if (searchString.length > 3) {
-      getQuery({ variables: { searchString } });
+      getQueryDebounce({ variables: { searchString } });
     }
+    return () => getQueryDebounce.cancel();
   }, [getQuery, searchString]);
 
   const updateQuery = (
