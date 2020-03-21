@@ -1,19 +1,25 @@
-import { useQuery as useApolloQuery } from "@apollo/react-hooks";
+import { useEffect } from "react";
+import { useLazyQuery as useApolloQuery } from "@apollo/react-hooks";
 import { QUERY } from "../apollo/client";
 import { GetRepos } from "../apollo/client/__generated__/GetRepos";
 import { ListProps } from "../interfaces";
 
 const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
-  const { data, loading, error, fetchMore } = useApolloQuery(QUERY, {
-    variables: {
-      searchString
-    },
-    notifyOnNetworkStatusChange: true,
-    skip: !searchString || searchString.length < 4,
-    onCompleted: () => {
-      updateHistory(searchString);
+  const [getQuery, { data, loading, error, fetchMore }] = useApolloQuery(
+    QUERY,
+    {
+      notifyOnNetworkStatusChange: true,
+      onCompleted: () => {
+        updateHistory(searchString);
+      }
     }
-  });
+  );
+
+  useEffect(() => {
+    if (searchString.length > 3) {
+      getQuery({ variables: { searchString } });
+    }
+  }, [getQuery, searchString]);
 
   const updateQuery = (
     prev: GetRepos,
