@@ -17,8 +17,7 @@ const List = (props: ListProps) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
     // 100 pixels added for mobile browsers with dynamic controls (Opera Touch)
     const listBottom = scrollHeight - scrollTop <= clientHeight + 100;
-    // repos.length check prevents onScroll event from firing on window.resize
-    if (listBottom && repos.length && !loading) {
+    if (listBottom && !loading) {
       fetchMore();
     }
   };
