@@ -30,7 +30,7 @@ describe("List component", () => {
 
   it("shows spinner while fetching", async () => {
     const { getByTestId } = renderList();
-    const spinner = getByTestId("spinner");
+    const spinner = await waitForElement(() => getByTestId("spinner"));
     expect(spinner).toBeInTheDocument();
     await waitForElementToBeRemoved(() => getByTestId("spinner"));
   });
@@ -48,11 +48,11 @@ describe("List component", () => {
     const handleScroll = jest.fn();
     const { getByTestId, queryByTestId, getAllByRole } = renderList("styled");
 
-    expect(getByTestId("spinner")).toBeInTheDocument();
-    await waitForElementToBeRemoved(() => getByTestId("spinner"));
-
-    // got initial request results
-    expect(getAllByRole("listitem")).toHaveLength(1);
+    // waiting for search results to show up
+    await waitForElement(() => queryByTestId("spinner"));
+    await waitForElementToBeRemoved(() => queryByTestId("spinner"));
+    const repos = await waitForElement(() => getAllByRole("listitem"));
+    expect(repos).toHaveLength(1);
 
     const scrollContainer = getByTestId("repoList");
     scrollContainer.addEventListener("scroll", handleScroll);
@@ -64,7 +64,8 @@ describe("List component", () => {
       scrollTop: { value: 0, writable: true }
     });
 
-    // scroll event fires handleScroll function but does not call request
+    // scroll event fires handleScroll function but does not fire query
+    expect(handleScroll).toBeCalledTimes(0);
     fireEvent.scroll(scrollContainer);
     expect(handleScroll).toBeCalledTimes(1);
     expect(queryByTestId("spinner")).not.toBeInTheDocument();
