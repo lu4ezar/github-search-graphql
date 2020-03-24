@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from "react";
 import Octicon, {
   Globe,
@@ -8,7 +7,7 @@ import Octicon, {
   CircleSlash
 } from "@primer/octicons-react";
 import { StyledRepo, Text, Link, IconContainer, Icon } from "./styled";
-import { GetRepos_search_edges_node_Repository } from "../../apollo/client/__generated__/GetRepos";
+import { RepoProps } from "../../interfaces";
 
 const Repo = ({
   homepageUrl,
@@ -17,8 +16,7 @@ const Repo = ({
   url,
   stargazers,
   watchers
-}: GetRepos_search_edges_node_Repository) => (
-  <StyledRepo>
+}: RepoProps) => (
     <Text>
       <h3>
         <Link
