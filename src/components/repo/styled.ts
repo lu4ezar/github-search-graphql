@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
-export const StyledRepo = styled.li`
-  list-style-type: none;
+export const StyledRepo = styled.div`
+  box-sizing: border-box;
   box-shadow: inset 0px 0px 5px #262323;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   padding: 0.5em;
-  margin-bottom: 1em;
   border-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   @media (min-width: 576px) {
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     align-items: center;
   }
 `;
@@ -19,6 +20,14 @@ export const Text = styled.div`
   flex-grow: 1;
   align-items: center;
   word-break: break-word;
+  justify-content: space-around;
+  @media (min-width: 576px) {
+    height: 100%;
+  }
+  & p,
+  & h3 {
+    margin: 0;
+  }
   .description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -31,6 +40,7 @@ export const IconContainer = styled.div`
   display: flex;
   font-size: 0.5rem;
   width: 100%;
+  box-sizing: border-box;
   border: 4px double #262323;
   box-shadow: inset -1px 0px 5px #262323;
   @media (min-width: 576px) {

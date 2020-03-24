@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListDiv = styled.div`
+const ListDiv = styled.div`
   grid-area: list;
   overflow: auto;
   display: flex;
@@ -13,7 +13,4 @@ export const ListDiv = styled.div`
   }
 `;
 
-export const StyledUl = styled.ul`
-  padding: 0;
-  margin: 0;
-`;
+export default ListDiv;

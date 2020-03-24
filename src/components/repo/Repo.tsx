@@ -10,6 +10,7 @@ import { StyledRepo, Text, Link, IconContainer, Icon } from "./styled";
 import { RepoProps } from "../../interfaces";
 
 const Repo = ({
+  style,
   homepageUrl,
   name,
   description,
@@ -17,6 +18,7 @@ const Repo = ({
   stargazers,
   watchers
 }: RepoProps) => (
+  <StyledRepo style={style}>
     <Text>
       <h3>
         <Link

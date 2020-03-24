@@ -1,14 +1,16 @@
 /* eslint-disable camelcase */
-import React, { SyntheticEvent } from "react";
-import {
-  GetRepos_search_edges,
-  GetRepos_search_edges_node_Repository
-} from "../../apollo/client/__generated__/GetRepos";
+import React, { SyntheticEvent, CSSProperties } from "react";
+import { FixedSizeList as ReactWindowList } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
+import { GetRepos_search_edges_node_Repository } from "../../apollo/client/__generated__/GetRepos";
 import { ListProps } from "../../interfaces";
 import useCustomQuery from "../../hooks/useLazyQuery";
 import Repo from "../repo";
 import Spinner from "../spinner";
-import { ListDiv, StyledUl } from "./styled";
+import ListDiv from "./styled";
+
+const GUTTER_SIZE = 16;
+const ROW_HEIGHT = 250;
 
 const List = (props: ListProps) => {
   const { loading, repos = [], error, fetchMore } = useCustomQuery(props);
@@ -21,17 +23,35 @@ const List = (props: ListProps) => {
       fetchMore();
     }
   };
-  const getRepoList = () => (
-    <StyledUl>
-      {(repos as GetRepos_search_edges[]).map(({ cursor, node }) => (
-        <Repo
-          key={cursor}
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...(node as GetRepos_search_edges_node_Repository)}
-        />
-      ))}
-    </StyledUl>
+
+  const Row = ({ index, style }: { index: number; style: CSSProperties }) => (
+    <Repo
+      style={{
+        ...style,
+        top: Number(style.top) + 16,
+        height: Number(style.height) - 16
+      }}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...(repos[index].node as GetRepos_search_edges_node_Repository)}
+    />
   );
+
+  const getRepoList = () =>
+    repos.length && (
+      <AutoSizer>
+        {({ height, width }) => (
+          <ReactWindowList
+            initialScrollOffset={0}
+            height={height}
+            width={width}
+            itemCount={repos.length}
+            itemSize={ROW_HEIGHT - GUTTER_SIZE}
+          >
+            {Row}
+          </ReactWindowList>
+        )}
+      </AutoSizer>
+    );
 
   return (
     <ListDiv
