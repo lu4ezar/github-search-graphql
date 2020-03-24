@@ -30,7 +30,9 @@ const Repo = ({
           {name}
         </Link>
       </h3>
-      <p>{description || "No description was provided"}</p>
+      <p className="description">
+        {description || "No description was provided"}
+      </p>
     </Text>
     <IconContainer>
       <Icon>

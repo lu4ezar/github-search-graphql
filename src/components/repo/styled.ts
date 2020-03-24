@@ -19,6 +19,13 @@ export const Text = styled.div`
   flex-grow: 1;
   align-items: center;
   word-break: break-word;
+  .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 `;
 export const IconContainer = styled.div`
   display: flex;
