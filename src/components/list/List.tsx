@@ -39,7 +39,8 @@ const List = (props: ListProps) => {
       onScroll={handleScroll}
       data-testid="repoList"
     >
-      {error ? <p>{error}</p> : getRepoList()}
+      {!!repos.length && getRepoList()}
+      {error && <p>{error}</p>}
       <Spinner loading={loading} />
     </ListDiv>
   );
