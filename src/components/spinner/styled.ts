@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   z-index: 100;
   opacity: 0.7;
   border-radius: 4px;
+  pointer-events: none;
   &.enter {
     opacity: 0;
     transition: opacity 300ms linear;
