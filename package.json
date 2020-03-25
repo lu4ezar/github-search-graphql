@@ -19,6 +19,7 @@
     "@types/react-transition-group": "^4.2.4",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.1",
+    "@types/react-window-infinite-loader": "^1.0.2",
     "@types/styled-components": "^4.4.3",
     "apollo": "^2.24.0",
     "apollo-boost": "^0.4.4",
@@ -32,6 +33,7 @@
     "react-transition-group": "^4.3.0",
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
+    "react-window-infinite-loader": "^1.0.5",
     "styled-components": "^5.0.1",
     "typescript": "^3.8.3"
   },
