@@ -10,8 +10,9 @@ import Repo from "../repo";
 import Spinner from "../spinner";
 import ListDiv from "./styled";
 
-const GUTTER_SIZE = 16;
-const ROW_HEIGHT = 250;
+const PADDING_SIZE = 15; // for top and bottom of the list
+const GUTTER_SIZE = 25; // between items
+const ROW_HEIGHT = 250; // item height
 
 const List = (props: ListProps) => {
   const { loading, repos = [], error, fetchMore, hasNextPage } = useCustomQuery(
@@ -27,13 +28,23 @@ const List = (props: ListProps) => {
     }
   };
 
-  const Row = ({ index, style }: { index: number; style: CSSProperties }) => (
-    <Repo
-      style={{
-        ...style,
-        top: Number(style.top) + 16,
-        height: Number(style.height) - 16
-      }}
+  const innerElementType = forwardRef(
+    (
+      { style, ...rest }: { style: CSSProperties },
+      ref: React.Ref<HTMLDivElement>
+    ) => (
+      <div
+        ref={ref}
+        style={{
+          ...style,
+          height: `${parseFloat(style.height as string) + PADDING_SIZE}px`,
+          paddingTop: PADDING_SIZE
+        }}
+        {...rest}
+      />
+    )
+  );
+
   const Row = ({ index, style }: { index: number; style: CSSProperties }) => {
     const itemStyle = {
       ...style,
@@ -54,19 +65,18 @@ const List = (props: ListProps) => {
 
   const getRepoList = () =>
     repos.length && (
-      <AutoSizer>
-        {({ height, width }) => (
-          <ReactWindowList
-            initialScrollOffset={0}
-            height={height}
-            width={width}
-            itemCount={repos.length}
-            itemSize={ROW_HEIGHT - GUTTER_SIZE}
-          >
-            {Row}
-          </ReactWindowList>
-        )}
-      </AutoSizer>
+          <AutoSizer>
+            {({ height, width }) => (
+              <ReactWindowList
+                innerElementType={innerElementType}
+                initialScrollOffset={0}
+                height={height}
+                width={width}
+              >
+                {Row}
+              </ReactWindowList>
+            )}
+          </AutoSizer>
     );
 
   return (
