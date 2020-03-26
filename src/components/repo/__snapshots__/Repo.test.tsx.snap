@@ -2,11 +2,11 @@
 
 exports[`matches the snapshot 1`] = `
 <div>
-  <li
-    class="sc-AxjAm cbzKtl"
+  <div
+    class="sc-AxjAm ccikoI"
   >
     <div
-      class="sc-AxirZ iSudAg"
+      class="sc-AxirZ eDSuYr"
     >
       <h3>
         <a
@@ -19,12 +19,14 @@ exports[`matches the snapshot 1`] = `
           github-search-graphql
         </a>
       </h3>
-      <p>
+      <p
+        class="description"
+      >
         Now with Github API v4! (graphql)
       </p>
     </div>
     <div
-      class="sc-AxiKw bTCynW"
+      class="sc-AxiKw ldrkkl"
     >
       <div
         class="sc-AxhCb gwkJWS"
@@ -126,6 +128,6 @@ exports[`matches the snapshot 1`] = `
         </div>
       </div>
     </div>
-  </li>
+  </div>
 </div>
 `;
