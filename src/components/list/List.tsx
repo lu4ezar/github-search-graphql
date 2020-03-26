@@ -61,14 +61,14 @@ const List = (props: ListProps) => {
 
   const getRepoList = () =>
     repos.length && (
-      <InfiniteLoader
-        isItemLoaded={isItemLoaded}
-        itemCount={itemCount}
-        loadMoreItems={loadMoreItems}
-      >
-        {({ onItemsRendered, ref }) => (
-          <AutoSizer>
-            {({ height, width }) => (
+      <AutoSizer>
+        {({ height, width }) => (
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={itemCount}
+            loadMoreItems={loadMoreItems}
+          >
+            {({ onItemsRendered, ref }) => (
               <ReactWindowList
                 innerElementType={innerElementType}
                 initialScrollOffset={0}
@@ -82,9 +82,9 @@ const List = (props: ListProps) => {
                 {Row}
               </ReactWindowList>
             )}
-          </AutoSizer>
+          </InfiniteLoader>
         )}
-      </InfiniteLoader>
+      </AutoSizer>
     );
 
   return (
