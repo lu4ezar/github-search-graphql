@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
 import React, { SyntheticEvent, CSSProperties } from "react";
 import { FixedSizeList as ReactWindowList } from "react-window";
