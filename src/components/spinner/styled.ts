@@ -2,16 +2,13 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
+  grid-area: list;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-height: 100%;
-  position: sticky;
-  bottom: 0;
-  background: grey;
+  background: grey !important;
   z-index: 100;
   opacity: 0.7;
-  border-radius: 4px;
   pointer-events: none;
   &.enter {
     opacity: 0;
