@@ -34,10 +34,23 @@ const List = (props: ListProps) => {
         top: Number(style.top) + 16,
         height: Number(style.height) - 16
       }}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...(repos[index].node as GetRepos_search_edges_node_Repository)}
-    />
-  );
+  const Row = ({ index, style }: { index: number; style: CSSProperties }) => {
+    const itemStyle = {
+      ...style,
+      top: Number(style.top) + PADDING_SIZE,
+      height: Number(style.height) - GUTTER_SIZE
+    };
+    return isItemLoaded(index) ? (
+      <Repo
+        style={itemStyle}
+        {...(repos[index].node as GetRepos_search_edges_node_Repository)}
+      />
+    ) : (
+      <div style={itemStyle}>
+        <Spinner loading />
+      </div>
+    );
+  };
 
   const getRepoList = () =>
     repos.length && (
