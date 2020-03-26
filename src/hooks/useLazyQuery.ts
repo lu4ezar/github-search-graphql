@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import debounce from "lodash.debounce";
 import { useLazyQuery as useApolloQuery } from "@apollo/react-hooks";
 import { QUERY } from "../apollo/client";
@@ -6,11 +6,13 @@ import { GetRepos } from "../apollo/client/__generated__/GetRepos";
 import { ListProps } from "../interfaces";
 
 const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
+  const [hasNextPage, setHasNextPage] = useState(true);
   const [getQuery, { data, loading, error, fetchMore }] = useApolloQuery(
     QUERY,
     {
       notifyOnNetworkStatusChange: true,
       onCompleted: () => {
+        setHasNextPage(true);
         updateHistory(searchString);
       }
     }
@@ -28,9 +30,11 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     prev: GetRepos,
     { fetchMoreResult }: { fetchMoreResult?: GetRepos }
   ) => {
-    if (!fetchMoreResult) {
+    if (!fetchMoreResult?.search?.edges?.length) {
+      setHasNextPage(false);
       return prev;
     }
+    setHasNextPage(true);
     return {
       ...fetchMoreResult,
       search: {
@@ -60,6 +64,7 @@ const useCustomQuery = ({ searchString, updateHistory }: ListProps) => {
     loading,
     repos: data?.search?.edges,
     error: error?.message,
+    hasNextPage,
     fetchMore: fetchMoreRepos
   };
 };

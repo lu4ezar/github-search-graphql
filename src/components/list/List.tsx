@@ -13,7 +13,9 @@ const GUTTER_SIZE = 16;
 const ROW_HEIGHT = 250;
 
 const List = (props: ListProps) => {
-  const { loading, repos = [], error, fetchMore } = useCustomQuery(props);
+  const { loading, repos = [], error, fetchMore, hasNextPage } = useCustomQuery(
+    props
+  );
 
   const handleScroll = (e: SyntheticEvent) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
