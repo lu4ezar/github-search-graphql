@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
-import React, { SyntheticEvent, CSSProperties } from "react";
+import React, { CSSProperties, forwardRef } from "react";
 import { FixedSizeList as ReactWindowList } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
+import InfiniteLoader from "react-window-infinite-loader";
 import { GetRepos_search_edges_node_Repository } from "../../apollo/client/__generated__/GetRepos";
 import { ListProps } from "../../interfaces";
 import useCustomQuery from "../../hooks/useLazyQuery";
@@ -19,14 +20,9 @@ const List = (props: ListProps) => {
     props
   );
 
-  const handleScroll = (e: SyntheticEvent) => {
-    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
-    // 100 pixels added for mobile browsers with dynamic controls (Opera Touch)
-    const listBottom = scrollHeight - scrollTop <= clientHeight + 100;
-    if (listBottom && !loading) {
-      fetchMore();
-    }
-  };
+  const itemCount = hasNextPage ? repos.length + 1 : repos.length;
+  const loadMoreItems = loading ? (): any => {} : fetchMore;
+  const isItemLoaded = (index: number) => !hasNextPage || index < repos.length;
 
   const innerElementType = forwardRef(
     (
@@ -65,6 +61,12 @@ const List = (props: ListProps) => {
 
   const getRepoList = () =>
     repos.length && (
+      <InfiniteLoader
+        isItemLoaded={isItemLoaded}
+        itemCount={itemCount}
+        loadMoreItems={loadMoreItems}
+      >
+        {({ onItemsRendered, ref }) => (
           <AutoSizer>
             {({ height, width }) => (
               <ReactWindowList
@@ -72,11 +74,17 @@ const List = (props: ListProps) => {
                 initialScrollOffset={0}
                 height={height}
                 width={width}
+                itemCount={itemCount}
+                itemSize={ROW_HEIGHT - GUTTER_SIZE}
+                ref={ref}
+                onItemsRendered={onItemsRendered}
               >
                 {Row}
               </ReactWindowList>
             )}
           </AutoSizer>
+        )}
+      </InfiniteLoader>
     );
 
   return (
