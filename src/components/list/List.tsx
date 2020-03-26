@@ -56,15 +56,13 @@ const List = (props: ListProps) => {
     );
 
   return (
-    <ListDiv
-      className={repos.length && "filled"}
-      onScroll={handleScroll}
-      data-testid="repoList"
-    >
-      {!!repos.length && getRepoList()}
-      {error && <p>{error}</p>}
+    <>
+      <ListDiv data-testid="repoList">
+        {!!repos.length && getRepoList()}
+        {error && <p>{error}</p>}
+      </ListDiv>
       <Spinner loading={loading} />
-    </ListDiv>
+    </>
   );
 };
 
