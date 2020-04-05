@@ -4,6 +4,7 @@ exports[`matches the snapshot 1`] = `
 <div>
   <div
     class="sc-AxjAm ccikoI"
+    role="listitem"
   >
     <div
       class="sc-AxirZ eDSuYr"
