@@ -13,7 +13,7 @@ import ListDiv from "./styled";
 
 const PADDING_SIZE = 15; // for top and bottom of the list
 const GUTTER_SIZE = 25; // between items
-const ROW_HEIGHT = 250; // item height
+export const ROW_HEIGHT = 250; // item height
 
 const List = (props: ListProps) => {
   const { loading, repos = [], error, fetchMore, hasNextPage } = useCustomQuery(

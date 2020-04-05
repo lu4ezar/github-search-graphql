@@ -15,6 +15,14 @@ const requestFetchMore = {
   }
 };
 
+const requestFetchMoreMore = {
+  query: QUERY,
+  variables: {
+    searchString: "styled",
+    after: "Y3Vyc29yOjI="
+  }
+};
+
 const requestError = {
   query: QUERY,
   variables: {
@@ -27,6 +35,40 @@ const result = {
     search: {
       __typename: "SearchResultItemConnection",
       edges: [
+        {
+          node: {
+            __typename: "Repository",
+            homepageUrl: "https://styled-components.com",
+            name: "styled-components",
+            description:
+              "Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress 💅",
+            url: "https://github.com/styled-components/styled-components",
+            stargazers: {
+              totalCount: 27623,
+              __typename: "StargazerConnection"
+            },
+            watchers: { totalCount: 385, __typename: "UserConnection" }
+          },
+          cursor: "Y3Vyc29yOjE=",
+          __typename: "SearchResultItemEdge"
+        },
+        {
+          node: {
+            __typename: "Repository",
+            homepageUrl: "https://styled-components.com",
+            name: "styled-components",
+            description:
+              "Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress 💅",
+            url: "https://github.com/styled-components/styled-components",
+            stargazers: {
+              totalCount: 27623,
+              __typename: "StargazerConnection"
+            },
+            watchers: { totalCount: 385, __typename: "UserConnection" }
+          },
+          cursor: "Y3Vyc29yOjE=",
+          __typename: "SearchResultItemEdge"
+        },
         {
           node: {
             __typename: "Repository",
@@ -77,6 +119,8 @@ const resultFetchMore = {
 
 const resultError = new Error("error!");
 
+// we need one additional mocked fetchMore request
+// due to infinite-loader default pre-fetch threshold
 const mocks = [
   {
     request,
@@ -84,6 +128,10 @@ const mocks = [
   },
   {
     request: requestFetchMore,
+    result: resultFetchMore
+  },
+  {
+    request: requestFetchMoreMore,
     result: resultFetchMore
   },
   {

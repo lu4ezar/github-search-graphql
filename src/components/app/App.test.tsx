@@ -3,6 +3,7 @@ import {
   render,
   fireEvent,
   waitForElement,
+  waitForElementToBeRemoved,
   within
 } from "@testing-library/react";
 import { MockedProvider } from "@apollo/react-testing";
@@ -38,6 +39,7 @@ describe("App component", () => {
 
     items = within(historyContainer).queryAllByRole("button");
     expect(items).toHaveLength(1);
+    await waitForElementToBeRemoved(() => utils.getByTestId("spinner"));
   });
 
   it("clears input on Clear button click", async () => {
@@ -74,5 +76,6 @@ describe("App component", () => {
     const historyItem = within(historyComponent).getByText(/styled/i);
     fireEvent.click(historyItem);
     expect(input.value).toEqual("styled");
+    await waitForElementToBeRemoved(() => utils.getByTestId("spinner"));
   });
 });
