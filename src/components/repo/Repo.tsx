@@ -18,7 +18,7 @@ const Repo = ({
   stargazers,
   watchers
 }: RepoProps) => (
-  <StyledRepo style={style}>
+  <StyledRepo style={style} role="listitem">
     <Text>
       <h3>
         <Link
