@@ -8,6 +8,7 @@ import { GetRepos_search_edges_node_Repository } from "../../apollo/client/__gen
 import { ListProps } from "../../interfaces";
 import useCustomQuery from "../../hooks/useLazyQuery";
 import Repo from "../repo";
+import DummyRepo from "../dummyRepo";
 import Spinner from "../spinner";
 import ListDiv from "./styled";
 
@@ -20,7 +21,7 @@ const List = (props: ListProps) => {
     props
   );
 
-  const itemCount = hasNextPage ? repos.length + 1 : repos.length;
+  const itemCount = hasNextPage ? repos.length + 10 : repos.length;
   const loadMoreItems = loading ? (): any => {} : fetchMore;
   const isItemLoaded = (index: number) => !hasNextPage || index < repos.length;
 
@@ -53,9 +54,7 @@ const List = (props: ListProps) => {
         {...(repos[index].node as GetRepos_search_edges_node_Repository)}
       />
     ) : (
-      <div style={itemStyle}>
-        <Spinner loading />
-      </div>
+      <DummyRepo style={itemStyle} />
     );
   };
 

@@ -27,6 +27,7 @@ export const Text = styled.div`
   & p,
   & h3 {
     margin: 0;
+    min-width: 90%;
   }
   .description {
     display: -webkit-box;
@@ -40,12 +41,13 @@ export const IconContainer = styled.div`
   display: flex;
   font-size: 0.5rem;
   width: 100%;
-  box-sizing: border-box;
   border: 4px double #262323;
   box-shadow: inset -1px 0px 5px #262323;
+  @media (max-width: 575px) {
+    box-sizing: border-box;
+  }
   @media (min-width: 576px) {
     justify-content: center;
-    box-sizing: border-box;
     flex-flow: row wrap;
     font-size: 1vmax;
     width: 14vmax;
