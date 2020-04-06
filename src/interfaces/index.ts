@@ -25,5 +25,5 @@ export interface InputProps {
 }
 
 export interface RepoProps extends GetRepos_search_edges_node_Repository {
-  style?: CSSProperties;
+  style: CSSProperties;
 }
