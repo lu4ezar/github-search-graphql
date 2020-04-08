@@ -2,7 +2,7 @@ import React from "react";
 import { InputDiv, Clear } from "./styled";
 import { InputProps } from "../../interfaces";
 
-const Input = ({ value, onChange, clearInput }: InputProps) => (
+const Input = ({ value, onChange, clearInput, refProp }: InputProps) => (
   <InputDiv>
     <label htmlFor="search">
       <input
@@ -11,6 +11,7 @@ const Input = ({ value, onChange, clearInput }: InputProps) => (
         onChange={onChange}
         placeholder="github-search-graphql"
         value={value}
+        ref={refProp}
       />
     </label>
     <Clear

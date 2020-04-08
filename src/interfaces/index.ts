@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { ChangeEvent, CSSProperties } from "react";
+import { ChangeEvent, CSSProperties, RefObject } from "react";
 import {
   GetReposVariables,
   GetRepos_search_edges_node_Repository
@@ -22,6 +22,7 @@ export interface InputProps {
   value: React.InputHTMLAttributes<HTMLInputElement>["value"];
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   clearInput: () => void;
+  refProp?: RefObject<HTMLInputElement>;
 }
 
 export interface RepoProps extends GetRepos_search_edges_node_Repository {

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useRef } from "react";
 
 import Header from "../header";
 import Footer from "../footer";
@@ -10,6 +10,7 @@ import { SearchString, SearchHistory } from "../../interfaces";
 import updateHistory from "./utils/updateHistory";
 
 const App = () => {
+  const inputEl = useRef<HTMLInputElement>(null);
   const [searchString, setSearchString] = useState("");
   const [searchHistory, setHistory] = useState([] as SearchHistory);
 
@@ -25,11 +26,18 @@ const App = () => {
   };
   const clearInput = () => {
     setSearchString("");
+    const input = inputEl.current as HTMLInputElement;
+    input.focus();
   };
   return (
     <Container>
       <Header />
-      <Input value={searchString} onChange={onChange} clearInput={clearInput} />
+      <Input
+        value={searchString}
+        onChange={onChange}
+        clearInput={clearInput}
+        refProp={inputEl}
+      />
       <Recent
         searchHistory={searchHistory}
         getSearchStringFromHistory={setInputValue}
