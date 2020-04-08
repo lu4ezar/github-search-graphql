@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Input from "./Input";
 
@@ -23,8 +23,6 @@ const setup = (value: HTMLInputElement["value"] = "") => {
     ...utils
   };
 };
-
-afterEach(cleanup);
 
 it("matches the snapshot", () => {
   const { input } = setup();
