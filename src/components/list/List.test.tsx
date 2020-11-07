@@ -22,6 +22,7 @@ describe("List component", () => {
     expect(container).toBeInTheDocument();
   });
 
+  // FixMePlease
   it("shows error message if request was failed", async () => {
     const { getByText } = renderList("error");
     const err = await waitForElement(() => getByText(/error/i));
