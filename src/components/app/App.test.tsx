@@ -42,7 +42,7 @@ describe("App component", () => {
     await waitForElementToBeRemoved(() => utils.getByTestId("spinner"));
   });
 
-  it("clears input on Clear button click", async () => {
+  it("clears input on Clear button click and sets focus", async () => {
     const { getByRole, getByTitle } = renderApp();
     const input = getByRole("searchbox") as HTMLInputElement;
     fireEvent.change(input, {
@@ -54,6 +54,7 @@ describe("App component", () => {
     const clearButton = getByTitle(/clear/i);
     fireEvent.click(clearButton);
     expect(input.value).toEqual("");
+    expect(input).toHaveFocus();
   });
 
   it("sets input value by clicking history list item", async () => {
