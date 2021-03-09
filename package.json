@@ -34,8 +34,8 @@
     "react-virtualized-auto-sizer": "1.0.4",
     "react-window": "1.8.6",
     "react-window-infinite-loader": "1.0.5",
+    "typescript": "3.9.9"
     "styled-components": "5.2.1",
-    "typescript": "3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
